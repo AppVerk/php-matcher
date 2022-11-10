@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Exception;
+namespace Appverk\PHPMatcher\Exception;
 
 class UnknownExpanderClassException extends Exception
 {

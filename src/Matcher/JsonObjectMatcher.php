@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher;
+namespace Appverk\PHPMatcher\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\Pattern\Assert\Json;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\Pattern\Assert\Json;
+use Appverk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 
 final class JsonObjectMatcher extends Matcher

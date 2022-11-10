@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\ChainMatcher;
-use Coduo\PHPMatcher\Matcher\ValueMatcher;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\ChainMatcher;
+use Appverk\PHPMatcher\Matcher\ValueMatcher;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace\VoidBacktrace;
-use Coduo\PHPMatcher\Factory\MatcherFactory;
-use Coduo\PHPMatcher\Matcher;
+use Appverk\PHPMatcher\Backtrace\VoidBacktrace;
+use Appverk\PHPMatcher\Factory\MatcherFactory;
+use Appverk\PHPMatcher\Matcher;
 use PHPUnit\Framework\TestCase;
 
 class OrMatcherTest extends TestCase

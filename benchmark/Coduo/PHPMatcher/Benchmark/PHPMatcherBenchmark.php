@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Benchmark;
+namespace Appverk\PHPMatcher\Benchmark;
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 /**
  * @revs(50)

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern;
+namespace Appverk\PHPMatcher\Matcher\Pattern;
 
 interface Pattern
 {

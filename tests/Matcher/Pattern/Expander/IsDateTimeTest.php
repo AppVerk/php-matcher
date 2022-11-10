@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\Pattern\Expander\IsDateTime;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\Pattern\Expander\IsDateTime;
 use PHPUnit\Framework\TestCase;
 
 class IsDateTimeTest extends TestCase

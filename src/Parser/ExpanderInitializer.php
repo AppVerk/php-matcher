@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Parser;
+namespace Appverk\PHPMatcher\Parser;
 
-use Coduo\PHPMatcher\AST\Expander;
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Exception\InvalidArgumentException;
-use Coduo\PHPMatcher\Exception\InvalidExpanderTypeException;
-use Coduo\PHPMatcher\Exception\UnknownExpanderClassException;
-use Coduo\PHPMatcher\Exception\UnknownExpanderException;
-use Coduo\PHPMatcher\Matcher\Pattern;
-use Coduo\PHPMatcher\Matcher\Pattern\PatternExpander;
+use Appverk\PHPMatcher\AST\Expander;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Exception\InvalidArgumentException;
+use Appverk\PHPMatcher\Exception\InvalidExpanderTypeException;
+use Appverk\PHPMatcher\Exception\UnknownExpanderClassException;
+use Appverk\PHPMatcher\Exception\UnknownExpanderException;
+use Appverk\PHPMatcher\Matcher\Pattern;
+use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
 
 final class ExpanderInitializer
 {
@@ -45,6 +45,7 @@ final class ExpanderInitializer
         Pattern\Expander\Repeat::NAME => Pattern\Expander\Repeat::class,
         Pattern\Expander\ExpanderMatch::NAME => Pattern\Expander\ExpanderMatch::class,
         Pattern\Expander\HasProperty::NAME => Pattern\Expander\HasProperty::class,
+        Pattern\Expander\IsOneOf::NAME => Pattern\Expander\IsOneOf::class,
     ];
 
     private Backtrace $backtrace;

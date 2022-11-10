@@ -10,6 +10,8 @@
         "friendsofphp/php-cs-fixer": "^3.1"
     },
     "config": {
-        "allow-plugins": false
+        "allow-plugins": {
+            "infection/extension-installer": false
+        }
     }
 }

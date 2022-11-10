@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\PHPUnit;
+namespace Appverk\PHPMatcher\PHPUnit;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Backtrace\VoidBacktrace;
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Backtrace\VoidBacktrace;
+use Appverk\PHPMatcher\PHPMatcher;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Util\Json;
 use SebastianBergmann\Comparator\ComparisonFailure;

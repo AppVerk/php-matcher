@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests;
+namespace Appverk\PHPMatcher\Tests;
 
-use Coduo\PHPMatcher\PHPMatcher;
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherTestCase;
+use Appverk\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
 
 class MatcherTest extends PHPMatcherTestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Assert;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Assert;
 
 final class Json
 {

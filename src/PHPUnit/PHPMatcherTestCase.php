@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\PHPUnit;
+namespace Appverk\PHPMatcher\PHPUnit;
 
 use PHPUnit\Framework\TestCase;
 

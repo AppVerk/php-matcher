@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Factory\MatcherFactory;
-use Coduo\PHPMatcher\Matcher;
+use Appverk\PHPMatcher\Factory\MatcherFactory;
+use Appverk\PHPMatcher\Matcher;
 
 final class ExpanderMatch implements Matcher\Pattern\PatternExpander
 {

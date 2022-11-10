@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests;
+namespace Appverk\PHPMatcher\Tests;
 
-use Coduo\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Lexer;
 use PHPUnit\Framework\TestCase;
 
 class LexerTest extends TestCase

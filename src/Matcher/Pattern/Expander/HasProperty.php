@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Matcher\Pattern\Assert\Json;
-use Coduo\PHPMatcher\Matcher\Pattern\PatternExpander;
+use Appverk\PHPMatcher\Matcher\Pattern\Assert\Json;
+use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
 final class HasProperty implements PatternExpander

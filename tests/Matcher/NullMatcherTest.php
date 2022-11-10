@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\NullMatcher;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\NullMatcher;
 use PHPUnit\Framework\TestCase;
 
 class NullMatcherTest extends TestCase

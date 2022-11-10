@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\ArrayMatcher;
+namespace Appverk\PHPMatcher\Matcher\ArrayMatcher;
 
 final class ValuePatternDifference implements Difference
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher;
+namespace Appverk\PHPMatcher;
 
-use Coduo\PHPMatcher\Matcher\ValueMatcher;
+use Appverk\PHPMatcher\Matcher\ValueMatcher;
 
 final class Matcher
 {

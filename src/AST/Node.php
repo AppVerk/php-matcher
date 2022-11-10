@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\AST;
+namespace Appverk\PHPMatcher\AST;
 
 interface Node
 {

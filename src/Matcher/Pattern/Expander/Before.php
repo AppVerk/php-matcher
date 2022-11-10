@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
 
 use Aeon\Calendar\Gregorian\DateTime;
 use Aeon\Calendar\Gregorian\Time;
-use Coduo\PHPMatcher\Matcher\Pattern\PatternExpander;
+use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
 final class Before implements PatternExpander

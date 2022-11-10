@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
 use PHPUnit\Framework\TestCase;
 
 class IsEmailTest extends TestCase
