@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Backtrace;
 
 trait BacktraceBehavior
 {

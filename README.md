@@ -1,6 +1,4 @@
-# PHP Matcher
-
-[![Type Coverage](https://shepherd.dev/github/coduo/php-matcher/coverage.svg)](https://shepherd.dev/coduo/php-matcher)
+# Appverk PHP Matcher
 
 Library created for testing all kinds of JSON/XML/TXT/Scalar values against patterns.
 
@@ -14,28 +12,12 @@ PHPMatcher::error() : ?string;
 
 It was built to simplify API's functional testing.
 
-* [![Test Suite](https://github.com/coduo/php-matcher/actions/workflows/test-suite.yml/badge.svg?branch=6.x)](https://github.com/coduo/php-matcher/actions/workflows/test-suite.yml) - [6.x README](https://github.com/coduo/php-matcher/tree/6.x/README.md)  PHP >= 7.4 <= 8.1
-* [![Build Status](https://github.com/coduo/php-matcher/workflows/Tests/badge.svg?branch=5.x)](https://github.com/coduo/php-matcher/actions?query=workflow%3ATests) - [5.x README](https://github.com/coduo/php-matcher/tree/5.x/README.md)  PHP >= 7.2 < 8.0
-* [![Build Status](https://github.com/coduo/php-matcher/workflows/Tests/badge.svg?branch=5.0)](https://github.com/coduo/php-matcher/actions?query=workflow%3ATests) - [5.0 README](https://github.com/coduo/php-matcher/tree/5.0/README.md)  PHP >= 7.2 < 8.0
-* [![Build Status](https://travis-ci.org/coduo/php-matcher.svg?branch=4.0)](https://travis-ci.org/coduo/php-matcher) - [4.0.* README](https://github.com/coduo/php-matcher/tree/4.0/README.md)  PHP >= 7.2 < 8.0
-* [![Build Status](https://travis-ci.org/coduo/php-matcher.svg?branch=3.2)](https://travis-ci.org/coduo/php-matcher) - [3.2.* README](https://github.com/coduo/php-matcher/tree/3.2/README.md) PHP >= 7.0 < 8.0
-* [![Build Status](https://travis-ci.org/coduo/php-matcher.svg?branch=3.1)](https://travis-ci.org/coduo/php-matcher) - [3.1.* README](https://github.com/coduo/php-matcher/tree/3.1/README.md) PHP >= 7.0 < 8.0
-
-[![Latest Stable Version](https://poser.pugx.org/coduo/php-matcher/v/stable)](https://packagist.org/packages/coduo/php-matcher)
-[![Total Downloads](https://poser.pugx.org/coduo/php-matcher/downloads)](https://packagist.org/packages/coduo/php-matcher)
-[![Latest Unstable Version](https://poser.pugx.org/coduo/php-matcher/v/unstable)](https://packagist.org/packages/coduo/php-matcher)
-[![License](https://poser.pugx.org/coduo/php-matcher/license)](https://packagist.org/packages/coduo/php-matcher)
-
-## Sandbox
-
-Feel free to play first with [Sandbox](https://php-matcher.norbert.tech/)
-
 ## Installation
 
 Require new dev dependency using composer:
 
 ```
-composer require --dev "coduo/php-matcher"
+composer require --dev "app-verk/php-matcher"
 ```
 
 ## Basic usage
@@ -45,7 +27,7 @@ composer require --dev "coduo/php-matcher"
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 $match = $matcher->match("lorem ipsum dolor", "@string@");
@@ -62,7 +44,7 @@ if (!$match) {
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherTestCase;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
 
 class MatcherTest extends PHPMatcherTestCase
 {
@@ -78,7 +60,7 @@ class MatcherTest extends PHPMatcherTestCase
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherAssertions;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
 use PHPUnit\Framework\TestCase;
 
 class MatcherTest extends TestCase
@@ -114,6 +96,9 @@ class MatcherTest extends TestCase
 * ``@ulid@``
 * ``@json@``
 * ``@string@||@integer@`` - string OR integer
+* ``@enum@`` - used for PHP backend enums
+* ``@tax_number@`` - matches tax identification number(only PL format)
+* ``@regon@`` - matches registration number(only PL format)
 
 ### Available pattern expanders
 
@@ -143,6 +128,7 @@ class MatcherTest extends TestCase
 * ``count()`` - work's only with ``ArrayMatcher`` - example ``"@array@.count(5)"``
 * ``repeat($pattern, $isStrict = true)`` - example ``'@array@.repeat({"name": "foe"})'`` or ``"@array@.repeat('@string@')"``
 * ``match($pattern)`` - example ``{"image":"@json@.match({\"url\":\"@string@.isUrl()\"})"}``
+* ``isOneOf(class)`` - work's only with ``EnumMatcher``, as argument it accepts class name with namespace e.g. ``@enum@.isOneOf('App\Domain\OrderStatus::class')`` 
 
 ## Example usage
 
@@ -151,7 +137,7 @@ class MatcherTest extends TestCase
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -164,7 +150,7 @@ $matcher->match('string', 'string');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -178,7 +164,7 @@ $matcher->match("lorem ipsum dolor", "@string@.startsWith('lorem').contains('ips
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -194,7 +180,7 @@ $matcher->match('00:00:00', '@time@.before("01:00:00")');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -210,7 +196,7 @@ $matcher->match('2014-08-19', '@date@.before("today").after("+ 100year")');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -226,7 +212,7 @@ $matcher->match('2014-08-19', '@datetime@.before("today").after("+ 100year")');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -244,7 +230,7 @@ $matcher->match('Europe/Warsaw', '@tz@.isTzIdentifier()');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -258,7 +244,7 @@ $matcher->match(100, '@integer@.lowerThan(200).greaterThan(10)');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -274,7 +260,7 @@ $matcher->match(0b10100111001, '@number@');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -287,7 +273,7 @@ $matcher->match(10.1, "@double@.lowerThan(50.12).greaterThan(10)");
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -300,7 +286,7 @@ $matcher->match(false, "@boolean@");
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -317,7 +303,7 @@ $matcher->match(new \stdClass, "@wildcard@");
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -330,7 +316,7 @@ $matcher->match("Norbert", "expr(value === 'Norbert')");
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -342,7 +328,7 @@ $matcher->match('9f4db639-0e87-4367-9beb-d64e3f42ae18', '@uuid@');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -354,7 +340,7 @@ $matcher->match('01BX5ZZKBKACTAV9WEVGEMMVS0', '@ulid@');
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -414,7 +400,7 @@ $matcher->match(
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -469,7 +455,7 @@ $matcher->match(
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -521,7 +507,7 @@ $matcher->match(
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -555,7 +541,7 @@ $matcher->match(
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -620,7 +606,7 @@ $matcher->match(
 ```php
 <?php
 
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -710,13 +696,13 @@ Feature: Listing user toys
 ## PHPUnit integration
 
 The `assertMatchesPattern()` is a handy assertion that matches values in PHPUnit tests.
-To use it either include the `Coduo\PHPMatcher\PHPUnit\PHPMatcherAssertions` trait,
-or extend the `Coduo\PHPMatcher\PHPUnit\PHPMatcherTestCase`:
+To use it either include the `Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions` trait,
+or extend the `Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase`:
 
 ```php
-namespace Coduo\PHPMatcher\Tests\PHPUnit;
+namespace Appverk\PHPMatcher\Tests\PHPUnit;
 
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherAssertions;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
 use PHPUnit\Framework\TestCase;
 
 class PHPMatcherAssertionsTest extends TestCase
@@ -742,8 +728,3 @@ $mock->method('bar')
 ## License
 
 This library is distributed under the MIT license. Please see the LICENSE file.
-
-## Credits
-
-This lib was inspired by [JSON Expressions gem](https://github.com/chancancode/json_expressions) &&
-[Behat RestExtension ](https://github.com/jakzal/RestExtension)

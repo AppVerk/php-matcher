@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\WildcardMatcher;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\WildcardMatcher;
 use PHPUnit\Framework\TestCase;
 
 class WildcardMatcherTest extends TestCase

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern;
+namespace Appverk\PHPMatcher\Matcher\Pattern;
 
-use Coduo\PHPMatcher\Exception\UnknownTypeException;
-use Coduo\PHPMatcher\Matcher\UlidMatcher;
-use Coduo\PHPMatcher\Matcher\UuidMatcher;
+use Appverk\PHPMatcher\Exception\UnknownTypeException;
+use Appverk\PHPMatcher\Matcher\UlidMatcher;
+use Appverk\PHPMatcher\Matcher\UuidMatcher;
 
 final class RegexConverter
 {

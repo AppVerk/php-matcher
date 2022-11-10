@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\PHPUnit;
+namespace Appverk\PHPMatcher\Tests\PHPUnit;
 
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherTestCase;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
 use PHPUnit\Framework\AssertionFailedError;
 
 class PHPMatcherTestCaseTest extends PHPMatcherTestCase

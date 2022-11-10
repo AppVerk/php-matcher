@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern;
+namespace Appverk\PHPMatcher\Matcher\Pattern;
 
-use Coduo\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Backtrace;
 
 interface PatternExpander
 {

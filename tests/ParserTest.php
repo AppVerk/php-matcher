@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests;
+namespace Appverk\PHPMatcher\Tests;
 
-use Coduo\PHPMatcher\AST\Expander;
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Lexer;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\AST\Expander;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase

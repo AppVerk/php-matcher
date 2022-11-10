@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Value;
+namespace Appverk\PHPMatcher\Value;
 
-use Coduo\PHPMatcher\Matcher\Pattern\Assert\Json;
+use Appverk\PHPMatcher\Matcher\Pattern\Assert\Json;
 
 final class SingleLineString
 {

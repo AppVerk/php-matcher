@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher;
+namespace Appverk\PHPMatcher;
 
-use Coduo\PHPMatcher\Exception\Exception;
-use Coduo\PHPMatcher\Exception\PatternException;
-use Coduo\PHPMatcher\Matcher\Pattern;
-use Coduo\PHPMatcher\Parser\ExpanderInitializer;
+use Appverk\PHPMatcher\Exception\Exception;
+use Appverk\PHPMatcher\Exception\PatternException;
+use Appverk\PHPMatcher\Matcher\Pattern;
+use Appverk\PHPMatcher\Parser\ExpanderInitializer;
 
 final class Parser
 {

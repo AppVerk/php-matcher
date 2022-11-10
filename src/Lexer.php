@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher;
+namespace Appverk\PHPMatcher;
 
 use Doctrine\Common\Lexer\AbstractLexer;
 

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Lexer;
-use Coduo\PHPMatcher\Matcher\JsonObjectMatcher;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Matcher\JsonObjectMatcher;
+use Appverk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 final class JsonObjectMatcherTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher;
+namespace Appverk\PHPMatcher\Matcher;
 
 abstract class Matcher implements ValueMatcher
 {

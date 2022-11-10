@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Lexer;
-use Coduo\PHPMatcher\Matcher;
-use Coduo\PHPMatcher\Matcher\JsonMatcher;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Matcher;
+use Appverk\PHPMatcher\Matcher\JsonMatcher;
+use Appverk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class JsonMatcherTest extends TestCase

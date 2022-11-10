@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\PHPUnit;
+namespace Appverk\PHPMatcher\PHPUnit;
 
-use Coduo\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Backtrace;
 use PHPUnit\Framework\TestCase;
 
 trait PHPMatcherAssertions

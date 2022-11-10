@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests;
+namespace Appverk\PHPMatcher\Tests;
 
-use Coduo\PHPMatcher\Backtrace\InMemoryBacktrace;
-use Coduo\PHPMatcher\PHPMatcher;
+use Appverk\PHPMatcher\Backtrace\InMemoryBacktrace;
+use Appverk\PHPMatcher\PHPMatcher;
 use PHPUnit\Framework\TestCase;
 
 final class BacktraceTest extends TestCase
@@ -22,7 +22,7 @@ final class BacktraceTest extends TestCase
         $this->matcher->match(100, '@string@');
 
         $this->assertStringContainsString(
-            "Matcher Coduo\PHPMatcher\Matcher error: integer \"100\" is not a valid string.",
+            "Matcher Appverk\PHPMatcher\Matcher error: integer \"100\" is not a valid string.",
             $this->matcher->backtrace()->last()
         );
     }
@@ -32,7 +32,7 @@ final class BacktraceTest extends TestCase
         $this->matcher->match('100', '@string@');
 
         $this->assertStringContainsString(
-            "Matcher Coduo\PHPMatcher\Matcher successfully matched value \"100\" with \"@string@\" pattern",
+            "Matcher Appverk\PHPMatcher\Matcher successfully matched value \"100\" with \"@string@\" pattern",
             $this->matcher->backtrace()->last()
         );
     }

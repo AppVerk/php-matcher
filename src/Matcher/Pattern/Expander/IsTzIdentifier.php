@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
 
 use Aeon\Calendar\Gregorian\TimeZone;
-use Coduo\PHPMatcher\Matcher\Pattern\PatternExpander;
+use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
 final class IsTzIdentifier implements PatternExpander

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher\Pattern\Expander;
+namespace Appverk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\Pattern\Expander\Contains;
-use Coduo\PHPMatcher\Matcher\Pattern\Expander\OneOf;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\Pattern\Expander\Contains;
+use Appverk\PHPMatcher\Matcher\Pattern\Expander\OneOf;
 use PHPUnit\Framework\TestCase;
 
 class OneOfTest extends TestCase

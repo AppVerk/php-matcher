@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Backtrace;
+namespace Appverk\PHPMatcher\Backtrace;
 
-use Coduo\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Backtrace;
 
 final class VoidBacktrace implements Backtrace
 {

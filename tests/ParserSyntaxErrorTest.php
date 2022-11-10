@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests;
+namespace Appverk\PHPMatcher\Tests;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Exception\PatternException;
-use Coduo\PHPMatcher\Lexer;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Exception\PatternException;
+use Appverk\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class ParserSyntaxErrorTest extends TestCase

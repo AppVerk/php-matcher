@@ -1,7 +1,7 @@
 {
-    "name": "coduo/php-matcher",
+    "name": "app-verk/php-matcher",
     "type": "library",
-    "description": "PHP Matcher enables you to match values with patterns",
+    "description": "Appverk extension of PHP Matcher, it enables you to match values with patterns",
     "keywords": ["json", "matcher", "tests", "match"],
     "license": "MIT",
     "authors": [
@@ -12,6 +12,10 @@
         {
             "name": "Norbert Orzechowicz",
             "email": "norbert@orzechowicz.pl"
+        },
+        {
+            "name": "Rafał Narowski",
+            "email": "rafal.narowski@appverk.com"
         }
     ],
     "require": {
@@ -28,18 +32,18 @@
         "symfony/expression-language": "^2.3|^3.0|^4.0|^5.0"
     },
     "suggest": {
-        "openlss/lib-array2xml": "In order ot use Coduo\\PHPMatcher\\Matcher\\XmlMatcher",
-        "symfony/expression-language" : "In order to use Coduo\\PHPMatcher\\Matcher\\ExpressionMatcher"
+        "openlss/lib-array2xml": "In order ot use Appverk\\PHPMatcher\\Matcher\\XmlMatcher",
+        "symfony/expression-language" : "In order to use Appverk\\PHPMatcher\\Matcher\\ExpressionMatcher"
     },
     "autoload": {
         "psr-4": {
-            "Coduo\\PHPMatcher\\": "src/"
+            "Appverk\\PHPMatcher\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Coduo\\PHPMatcher\\Tests\\": "tests/",
-            "Coduo\\PHPMatcher\\Benchmark\\": "benchmark/Coduo/PHPMatcher/Benchmark/"
+            "Appverk\\PHPMatcher\\Tests\\": "tests/",
+            "Appverk\\PHPMatcher\\Benchmark\\": "benchmark/Appverk/PHPMatcher/Benchmark/"
         }
     },
     "config": {

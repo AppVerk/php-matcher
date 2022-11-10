@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\Matcher;
+namespace Appverk\PHPMatcher\Tests\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\CallbackMatcher;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\CallbackMatcher;
 use PHPUnit\Framework\TestCase;
 
 class CallbackMatcherTest extends TestCase

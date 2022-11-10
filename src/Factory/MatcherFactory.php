@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Factory;
+namespace Appverk\PHPMatcher\Factory;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Factory;
-use Coduo\PHPMatcher\Lexer;
-use Coduo\PHPMatcher\Matcher;
-use Coduo\PHPMatcher\Parser;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Factory;
+use Appverk\PHPMatcher\Lexer;
+use Appverk\PHPMatcher\Matcher;
+use Appverk\PHPMatcher\Parser;
 
 final class MatcherFactory implements Factory
 {
@@ -89,6 +89,9 @@ final class MatcherFactory implements Factory
                 new Matcher\UuidMatcher($backtrace, $parser),
                 new Matcher\UlidMatcher($backtrace, $parser),
                 new Matcher\JsonObjectMatcher($backtrace, $parser),
+                new Matcher\EnumMatcher($backtrace, $parser),
+                new Matcher\TaxNumberMatcher($backtrace),
+                new Matcher\RegonMatcher($backtrace, $parser),
             ]
         );
     }

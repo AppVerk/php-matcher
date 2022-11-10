@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Matcher;
+namespace Appverk\PHPMatcher\Matcher;
 
-use Coduo\PHPMatcher\Backtrace;
-use Coduo\PHPMatcher\Matcher\Pattern\Assert\Xml;
+use Appverk\PHPMatcher\Backtrace;
+use Appverk\PHPMatcher\Matcher\Pattern\Assert\Xml;
 use Coduo\ToString\StringConverter;
 use LSS\XML2Array;
 

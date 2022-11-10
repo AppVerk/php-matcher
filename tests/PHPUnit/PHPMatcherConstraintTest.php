@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Coduo\PHPMatcher\Tests\PHPUnit;
+namespace Appverk\PHPMatcher\Tests\PHPUnit;
 
-use Coduo\PHPMatcher\PHPUnit\PHPMatcherConstraint;
+use Appverk\PHPMatcher\PHPUnit\PHPMatcherConstraint;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\ExpectationFailedException;
