@@ -1,7 +1,7 @@
 {
     "name": "app-verk/php-matcher",
     "type": "library",
-    "description": "Appverk extension of PHP Matcher, it enables you to match values with patterns",
+    "description": "AppVerk extension of PHP Matcher, it enables you to match values with patterns",
     "keywords": ["json", "matcher", "tests", "match"],
     "license": "MIT",
     "authors": [

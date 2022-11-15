@@ -1,4 +1,4 @@
-# Appverk PHP Matcher
+# AppVerk PHP Matcher
 
 Library created for testing all kinds of JSON/XML/TXT/Scalar values against patterns.
 
@@ -27,7 +27,7 @@ composer require --dev "app-verk/php-matcher"
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 $match = $matcher->match("lorem ipsum dolor", "@string@");
@@ -44,7 +44,7 @@ if (!$match) {
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
+use AppVerk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
 
 class MatcherTest extends PHPMatcherTestCase
 {
@@ -60,7 +60,7 @@ class MatcherTest extends PHPMatcherTestCase
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
+use AppVerk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
 use PHPUnit\Framework\TestCase;
 
 class MatcherTest extends TestCase
@@ -137,7 +137,7 @@ class MatcherTest extends TestCase
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -150,7 +150,7 @@ $matcher->match('string', 'string');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -164,7 +164,7 @@ $matcher->match("lorem ipsum dolor", "@string@.startsWith('lorem').contains('ips
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -180,7 +180,7 @@ $matcher->match('00:00:00', '@time@.before("01:00:00")');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -196,7 +196,7 @@ $matcher->match('2014-08-19', '@date@.before("today").after("+ 100year")');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -212,7 +212,7 @@ $matcher->match('2014-08-19', '@datetime@.before("today").after("+ 100year")');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -230,7 +230,7 @@ $matcher->match('Europe/Warsaw', '@tz@.isTzIdentifier()');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -244,7 +244,7 @@ $matcher->match(100, '@integer@.lowerThan(200).greaterThan(10)');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -260,7 +260,7 @@ $matcher->match(0b10100111001, '@number@');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -273,7 +273,7 @@ $matcher->match(10.1, "@double@.lowerThan(50.12).greaterThan(10)");
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -286,7 +286,7 @@ $matcher->match(false, "@boolean@");
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -303,7 +303,7 @@ $matcher->match(new \stdClass, "@wildcard@");
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -316,7 +316,7 @@ $matcher->match("Norbert", "expr(value === 'Norbert')");
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -328,7 +328,7 @@ $matcher->match('9f4db639-0e87-4367-9beb-d64e3f42ae18', '@uuid@');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -340,7 +340,7 @@ $matcher->match('01BX5ZZKBKACTAV9WEVGEMMVS0', '@ulid@');
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -400,7 +400,7 @@ $matcher->match(
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -455,7 +455,7 @@ $matcher->match(
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -507,7 +507,7 @@ $matcher->match(
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -541,7 +541,7 @@ $matcher->match(
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -606,7 +606,7 @@ $matcher->match(
 ```php
 <?php
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 $matcher = new PHPMatcher();
 
@@ -696,13 +696,13 @@ Feature: Listing user toys
 ## PHPUnit integration
 
 The `assertMatchesPattern()` is a handy assertion that matches values in PHPUnit tests.
-To use it either include the `Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions` trait,
-or extend the `Appverk\PHPMatcher\PHPUnit\PHPMatcherTestCase`:
+To use it either include the `AppVerk\PHPMatcher\PHPUnit\PHPMatcherAssertions` trait,
+or extend the `AppVerk\PHPMatcher\PHPUnit\PHPMatcherTestCase`:
 
 ```php
-namespace Appverk\PHPMatcher\Tests\PHPUnit;
+namespace AppVerk\PHPMatcher\Tests\PHPUnit;
 
-use Appverk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
+use AppVerk\PHPMatcher\PHPUnit\PHPMatcherAssertions;
 use PHPUnit\Framework\TestCase;
 
 class PHPMatcherAssertionsTest extends TestCase

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher\Pattern;
+namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern;
 
-use Appverk\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
-use Appverk\PHPMatcher\Matcher\Pattern\Expander\IsEmpty;
-use Appverk\PHPMatcher\Matcher\Pattern\Expander\Optional;
-use Appverk\PHPMatcher\Matcher\Pattern\TypePattern;
+use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
+use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmpty;
+use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Optional;
+use AppVerk\PHPMatcher\Matcher\Pattern\TypePattern;
 use PHPUnit\Framework\TestCase;
 
 class PatternTest extends TestCase

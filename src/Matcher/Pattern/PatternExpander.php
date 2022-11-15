@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern;
+namespace AppVerk\PHPMatcher\Matcher\Pattern;
 
-use Appverk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Backtrace;
 
 interface PatternExpander
 {

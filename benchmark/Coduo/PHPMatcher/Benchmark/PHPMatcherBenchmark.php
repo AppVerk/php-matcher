@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Benchmark;
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 
 /**
  * @revs(50)

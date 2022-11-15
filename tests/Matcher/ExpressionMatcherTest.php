@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\ExpressionMatcher;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\ExpressionMatcher;
 use PHPUnit\Framework\TestCase;
 
 class ExpressionMatcherTest extends TestCase

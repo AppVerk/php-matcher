@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher\Pattern\Expander;
+namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\Pattern\Expander\Count;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Count;
 use PHPUnit\Framework\TestCase;
 
 class CountTest extends TestCase

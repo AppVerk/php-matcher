@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher;
+namespace AppVerk\PHPMatcher;
 
-use Appverk\PHPMatcher\Exception\Exception;
-use Appverk\PHPMatcher\Exception\PatternException;
-use Appverk\PHPMatcher\Matcher\Pattern;
-use Appverk\PHPMatcher\Parser\ExpanderInitializer;
+use AppVerk\PHPMatcher\Exception\Exception;
+use AppVerk\PHPMatcher\Exception\PatternException;
+use AppVerk\PHPMatcher\Matcher\Pattern;
+use AppVerk\PHPMatcher\Parser\ExpanderInitializer;
 
 final class Parser
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Value;
+namespace AppVerk\PHPMatcher\Value;
 
-use Appverk\PHPMatcher\Matcher\Pattern\Assert\Json;
+use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 
 final class SingleLineString
 {

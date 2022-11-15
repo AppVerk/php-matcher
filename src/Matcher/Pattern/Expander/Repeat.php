@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
+namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Appverk\PHPMatcher\Factory\MatcherFactory;
-use Appverk\PHPMatcher\Matcher;
-use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
+use AppVerk\PHPMatcher\Factory\MatcherFactory;
+use AppVerk\PHPMatcher\Matcher;
+use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
 final class Repeat implements PatternExpander

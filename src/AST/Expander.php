@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\AST;
+namespace AppVerk\PHPMatcher\AST;
 
 final class Expander implements Node
 {

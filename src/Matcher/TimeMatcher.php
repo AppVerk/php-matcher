@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher;
+namespace AppVerk\PHPMatcher\Matcher;
 
 use Aeon\Calendar\Gregorian\Time;
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 
 final class TimeMatcher extends Matcher

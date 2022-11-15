@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
+namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Appverk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Backtrace;
 
 trait BacktraceBehavior
 {

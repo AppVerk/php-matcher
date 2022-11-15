@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Backtrace;
+namespace AppVerk\PHPMatcher\Backtrace;
 
-use Appverk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Backtrace;
 
 final class VoidBacktrace implements Backtrace
 {

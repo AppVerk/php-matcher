@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Factory;
+namespace AppVerk\PHPMatcher\Factory;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Factory;
-use Appverk\PHPMatcher\Lexer;
-use Appverk\PHPMatcher\Matcher;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Factory;
+use AppVerk\PHPMatcher\Lexer;
+use AppVerk\PHPMatcher\Matcher;
+use AppVerk\PHPMatcher\Parser;
 
 final class MatcherFactory implements Factory
 {

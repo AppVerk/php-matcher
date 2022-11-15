@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests;
+namespace AppVerk\PHPMatcher\Tests;
 
-use Appverk\PHPMatcher\PHPMatcher;
+use AppVerk\PHPMatcher\PHPMatcher;
 use PHPUnit\Framework\TestCase;
 
 final class OrMatcherTest extends TestCase

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests;
+namespace AppVerk\PHPMatcher\Tests;
 
-use Appverk\PHPMatcher\AST\Expander;
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Lexer;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\AST\Expander;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Lexer;
+use AppVerk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase

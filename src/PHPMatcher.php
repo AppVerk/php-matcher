@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher;
+namespace AppVerk\PHPMatcher;
 
-use Appverk\PHPMatcher\Backtrace\VoidBacktrace;
-use Appverk\PHPMatcher\Factory\MatcherFactory;
+use AppVerk\PHPMatcher\Backtrace\VoidBacktrace;
+use AppVerk\PHPMatcher\Factory\MatcherFactory;
 
 final class PHPMatcher
 {

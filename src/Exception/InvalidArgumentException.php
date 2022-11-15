@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Exception;
+namespace AppVerk\PHPMatcher\Exception;
 
 class InvalidArgumentException extends Exception
 {

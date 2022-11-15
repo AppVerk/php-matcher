@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\ChainMatcher;
-use Appverk\PHPMatcher\Matcher\ValueMatcher;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\ChainMatcher;
+use AppVerk\PHPMatcher\Matcher\ValueMatcher;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

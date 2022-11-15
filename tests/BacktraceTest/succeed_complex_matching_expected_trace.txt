@@ -1,364 +1,364 @@
-#1 Matcher Appverk\PHPMatcher\Matcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#2 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (all) matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#3 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#4 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#5 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#6 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#7 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#8 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#9 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#10 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#11 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#12 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#13 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#14 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#15 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#16 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#17 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#18 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#19 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher failed to match value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#20 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#21 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#22 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#23 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#24 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#25 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#26 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#27 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#28 Matcher Appverk\PHPMatcher\Matcher\JsonMatcher can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
-#29 Matcher Appverk\PHPMatcher\Matcher\JsonMatcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#30 Matcher Appverk\PHPMatcher\Matcher\ArrayMatcher matching value "Array(3)" with "Array(3)" pattern
-#31 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(2)"
-#32 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(2)" with "Array(2)" pattern
-#33 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(2)"
-#34 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(2)"
-#35 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(2)" with "Array(2)" pattern
-#36 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(2)"
-#37 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(2)"
-#38 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(2)"
-#39 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(2)"
-#40 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(2)"
-#41 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(2)"
-#42 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(2)"
-#43 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(2)"
-#44 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(2)"
-#45 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(2)"
-#46 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(2)"
-#47 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(2)"
-#48 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(2)"
-#49 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(2)"
-#50 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(2)"
-#51 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(2)"
-#52 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(2)"
-#53 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(2)"
-#54 Matcher Appverk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(2)"
-#55 Matcher Appverk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(2)"
-#56 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(2)" with "Array(2)" pattern
-#57 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#58 Matcher Appverk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(2)"
-#59 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(2)" with "Array(2)" pattern
-#60 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#61 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(5)"
-#62 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(5)" with "Array(5)" pattern
-#63 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(5)"
-#64 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(5)"
-#65 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(5)" with "Array(5)" pattern
-#66 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(5)"
-#67 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(5)"
-#68 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(5)"
-#69 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(5)"
-#70 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(5)"
-#71 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(5)"
-#72 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(5)"
-#73 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(5)"
-#74 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(5)"
-#75 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(5)"
-#76 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(5)"
-#77 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(5)"
-#78 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(5)"
-#79 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(5)"
-#80 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(5)"
-#81 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(5)"
-#82 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(5)"
-#83 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(5)"
-#84 Matcher Appverk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(5)"
-#85 Matcher Appverk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(5)"
-#86 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(5)" with "Array(5)" pattern
-#87 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#88 Matcher Appverk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(5)"
-#89 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(5)" with "Array(5)" pattern
-#90 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
-#91 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@integer@"
-#92 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "131" with "@integer@" pattern
-#93 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@integer@"
-#94 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@integer@"
-#95 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "131" with "@integer@" pattern
-#96 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@integer@"
-#97 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@integer@"
-#98 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@integer@"
-#99 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "@integer@"
-#100 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can match pattern "@integer@"
-#101 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher matching value "131" with "@integer@" pattern
-#102 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher successfully matched value "131" with "@integer@" pattern
-#103 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "131" with "@integer@" pattern
-#104 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "131" with "@integer@" pattern
-#105 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Norbert"
-#106 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Norbert" with "Norbert" pattern
-#107 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Norbert"
-#108 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Norbert"
-#109 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Norbert" with "Norbert" pattern
-#110 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Norbert"
-#111 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Norbert"
-#112 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Norbert"
-#113 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Norbert"
-#114 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Norbert"
-#115 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Norbert"
-#116 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Norbert"
-#117 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Norbert"
-#118 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Norbert"
-#119 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Norbert"
-#120 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Norbert"
-#121 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Norbert"
-#122 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Norbert"
-#123 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Norbert" with "Norbert" pattern
-#124 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Norbert" with "Norbert" pattern
-#125 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Norbert" with "Norbert" pattern
-#126 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Norbert" with "Norbert" pattern
-#127 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Orzechowicz"
-#128 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Orzechowicz" with "Orzechowicz" pattern
-#129 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Orzechowicz"
-#130 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Orzechowicz"
-#131 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Orzechowicz" with "Orzechowicz" pattern
-#132 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Orzechowicz"
-#133 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Orzechowicz"
-#134 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Orzechowicz"
-#135 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Orzechowicz"
-#136 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Orzechowicz"
-#137 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Orzechowicz"
-#138 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Orzechowicz"
-#139 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Orzechowicz"
-#140 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Orzechowicz"
-#141 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Orzechowicz"
-#142 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Orzechowicz"
-#143 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Orzechowicz"
-#144 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Orzechowicz"
-#145 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Orzechowicz" with "Orzechowicz" pattern
-#146 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Orzechowicz" with "Orzechowicz" pattern
-#147 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Orzechowicz" with "Orzechowicz" pattern
-#148 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Orzechowicz" with "Orzechowicz" pattern
-#149 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@boolean@"
-#150 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "true" with "@boolean@" pattern
-#151 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@boolean@"
-#152 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@boolean@"
-#153 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "true" with "@boolean@" pattern
-#154 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@boolean@"
-#155 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@boolean@"
-#156 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@boolean@"
-#157 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "@boolean@"
-#158 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@boolean@"
-#159 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can match pattern "@boolean@"
-#160 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher matching value "true" with "@boolean@" pattern
-#161 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher successfully matched value "true" with "@boolean@" pattern
-#162 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "true" with "@boolean@" pattern
-#163 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "true" with "@boolean@" pattern
-#164 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@array@.isEmpty()"
-#165 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(0)" with "@array@.isEmpty()" pattern
-#166 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@array@.isEmpty()"
-#167 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@array@.isEmpty()"
-#168 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(0)" with "@array@.isEmpty()" pattern
-#169 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@array@.isEmpty()"
-#170 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@array@.isEmpty()"
-#171 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@array@.isEmpty()"
-#172 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "@array@.isEmpty()"
-#173 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@array@.isEmpty()"
-#174 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "@array@.isEmpty()"
-#175 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "@array@.isEmpty()"
-#176 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "@array@.isEmpty()"
-#177 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "@array@.isEmpty()"
-#178 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "@array@.isEmpty()"
-#179 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "@array@.isEmpty()"
-#180 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "@array@.isEmpty()"
-#181 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "@array@.isEmpty()"
-#182 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Array(0)" with "@array@.isEmpty()" pattern
-#183 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher failed to match value "Array(0)" with "@array@.isEmpty()" pattern
-#184 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher error: "Array(0)" does not match "@array@.isEmpty()".
-#185 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "@array@.isEmpty()"
-#186 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "@array@.isEmpty()"
-#187 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "@array@.isEmpty()"
-#188 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "@array@.isEmpty()"
-#189 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "@array@.isEmpty()"
-#190 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(0)" with "@array@.isEmpty()" pattern
-#191 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(0)" does not match "@array@.isEmpty()".
-#192 Matcher Appverk\PHPMatcher\Matcher\TextMatcher can match pattern "@array@.isEmpty()"
-#193 Matcher Appverk\PHPMatcher\Matcher\TextMatcher matching value "Array(0)" with "@array@.isEmpty()" pattern
-#194 Matcher Appverk\PHPMatcher\Matcher\TextMatcher failed to match value "Array(0)" with "@array@.isEmpty()" pattern
-#195 Matcher Appverk\PHPMatcher\Matcher\TextMatcher error: array "Array(0)" is not a valid string.
-#196 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(0)" with "@array@.isEmpty()" pattern
-#197 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) error: array "Array(0)" is not a valid string.
+#1 Matcher AppVerk\PHPMatcher\Matcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#2 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (all) matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#3 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#4 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#5 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#6 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#7 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#8 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#9 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#10 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#11 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#12 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#13 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#14 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#15 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#16 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#17 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#18 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#19 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher failed to match value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#20 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#21 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#22 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#23 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#24 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#25 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#26 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#27 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#28 Matcher AppVerk\PHPMatcher\Matcher\JsonMatcher can match pattern "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}"
+#29 Matcher AppVerk\PHPMatcher\Matcher\JsonMatcher matching value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#30 Matcher AppVerk\PHPMatcher\Matcher\ArrayMatcher matching value "Array(3)" with "Array(3)" pattern
+#31 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(2)"
+#32 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(2)" with "Array(2)" pattern
+#33 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(2)"
+#34 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(2)"
+#35 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(2)" with "Array(2)" pattern
+#36 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(2)"
+#37 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(2)"
+#38 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(2)"
+#39 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(2)"
+#40 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(2)"
+#41 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(2)"
+#42 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(2)"
+#43 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(2)"
+#44 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(2)"
+#45 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(2)"
+#46 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(2)"
+#47 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(2)"
+#48 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(2)"
+#49 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(2)"
+#50 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(2)"
+#51 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(2)"
+#52 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(2)"
+#53 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(2)"
+#54 Matcher AppVerk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(2)"
+#55 Matcher AppVerk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(2)"
+#56 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(2)" with "Array(2)" pattern
+#57 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#58 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(2)"
+#59 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(2)" with "Array(2)" pattern
+#60 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#61 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(5)"
+#62 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(5)" with "Array(5)" pattern
+#63 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(5)"
+#64 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(5)"
+#65 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(5)" with "Array(5)" pattern
+#66 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(5)"
+#67 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(5)"
+#68 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(5)"
+#69 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(5)"
+#70 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(5)"
+#71 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(5)"
+#72 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(5)"
+#73 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(5)"
+#74 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(5)"
+#75 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(5)"
+#76 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(5)"
+#77 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(5)"
+#78 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(5)"
+#79 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(5)"
+#80 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(5)"
+#81 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(5)"
+#82 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(5)"
+#83 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(5)"
+#84 Matcher AppVerk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(5)"
+#85 Matcher AppVerk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(5)"
+#86 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(5)" with "Array(5)" pattern
+#87 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#88 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(5)"
+#89 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(5)" with "Array(5)" pattern
+#90 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) error: "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" does not match "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}".
+#91 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@integer@"
+#92 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "131" with "@integer@" pattern
+#93 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@integer@"
+#94 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@integer@"
+#95 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "131" with "@integer@" pattern
+#96 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@integer@"
+#97 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@integer@"
+#98 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@integer@"
+#99 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "@integer@"
+#100 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can match pattern "@integer@"
+#101 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher matching value "131" with "@integer@" pattern
+#102 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher successfully matched value "131" with "@integer@" pattern
+#103 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "131" with "@integer@" pattern
+#104 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "131" with "@integer@" pattern
+#105 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Norbert"
+#106 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Norbert" with "Norbert" pattern
+#107 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Norbert"
+#108 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Norbert"
+#109 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Norbert" with "Norbert" pattern
+#110 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Norbert"
+#111 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Norbert"
+#112 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Norbert"
+#113 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Norbert"
+#114 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Norbert"
+#115 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Norbert"
+#116 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Norbert"
+#117 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Norbert"
+#118 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Norbert"
+#119 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Norbert"
+#120 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Norbert"
+#121 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Norbert"
+#122 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Norbert"
+#123 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Norbert" with "Norbert" pattern
+#124 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Norbert" with "Norbert" pattern
+#125 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Norbert" with "Norbert" pattern
+#126 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Norbert" with "Norbert" pattern
+#127 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Orzechowicz"
+#128 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Orzechowicz" with "Orzechowicz" pattern
+#129 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Orzechowicz"
+#130 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Orzechowicz"
+#131 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Orzechowicz" with "Orzechowicz" pattern
+#132 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Orzechowicz"
+#133 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Orzechowicz"
+#134 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Orzechowicz"
+#135 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Orzechowicz"
+#136 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Orzechowicz"
+#137 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Orzechowicz"
+#138 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Orzechowicz"
+#139 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Orzechowicz"
+#140 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Orzechowicz"
+#141 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Orzechowicz"
+#142 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Orzechowicz"
+#143 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Orzechowicz"
+#144 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Orzechowicz"
+#145 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Orzechowicz" with "Orzechowicz" pattern
+#146 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Orzechowicz" with "Orzechowicz" pattern
+#147 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Orzechowicz" with "Orzechowicz" pattern
+#148 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Orzechowicz" with "Orzechowicz" pattern
+#149 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@boolean@"
+#150 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "true" with "@boolean@" pattern
+#151 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@boolean@"
+#152 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@boolean@"
+#153 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "true" with "@boolean@" pattern
+#154 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@boolean@"
+#155 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@boolean@"
+#156 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@boolean@"
+#157 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "@boolean@"
+#158 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@boolean@"
+#159 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can match pattern "@boolean@"
+#160 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher matching value "true" with "@boolean@" pattern
+#161 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher successfully matched value "true" with "@boolean@" pattern
+#162 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "true" with "@boolean@" pattern
+#163 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "true" with "@boolean@" pattern
+#164 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@array@.isEmpty()"
+#165 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(0)" with "@array@.isEmpty()" pattern
+#166 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@array@.isEmpty()"
+#167 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@array@.isEmpty()"
+#168 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(0)" with "@array@.isEmpty()" pattern
+#169 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@array@.isEmpty()"
+#170 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@array@.isEmpty()"
+#171 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@array@.isEmpty()"
+#172 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "@array@.isEmpty()"
+#173 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@array@.isEmpty()"
+#174 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "@array@.isEmpty()"
+#175 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "@array@.isEmpty()"
+#176 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "@array@.isEmpty()"
+#177 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "@array@.isEmpty()"
+#178 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "@array@.isEmpty()"
+#179 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "@array@.isEmpty()"
+#180 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "@array@.isEmpty()"
+#181 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "@array@.isEmpty()"
+#182 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Array(0)" with "@array@.isEmpty()" pattern
+#183 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher failed to match value "Array(0)" with "@array@.isEmpty()" pattern
+#184 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher error: "Array(0)" does not match "@array@.isEmpty()".
+#185 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "@array@.isEmpty()"
+#186 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "@array@.isEmpty()"
+#187 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "@array@.isEmpty()"
+#188 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "@array@.isEmpty()"
+#189 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "@array@.isEmpty()"
+#190 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(0)" with "@array@.isEmpty()" pattern
+#191 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(0)" does not match "@array@.isEmpty()".
+#192 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher can match pattern "@array@.isEmpty()"
+#193 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher matching value "Array(0)" with "@array@.isEmpty()" pattern
+#194 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher failed to match value "Array(0)" with "@array@.isEmpty()" pattern
+#195 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher error: array "Array(0)" is not a valid string.
+#196 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(0)" with "@array@.isEmpty()" pattern
+#197 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) error: array "Array(0)" is not a valid string.
 #198 Expander isEmpty matching value "Array(0)"
 #199 Expander isEmpty successfully matched value "Array(0)"
-#200 Matcher Appverk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(0)" with "@array@.isEmpty()" pattern
-#201 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(5)"
-#202 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(5)" with "Array(5)" pattern
-#203 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(5)"
-#204 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(5)"
-#205 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(5)" with "Array(5)" pattern
-#206 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(5)"
-#207 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(5)"
-#208 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(5)"
-#209 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(5)"
-#210 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(5)"
-#211 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(5)"
-#212 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(5)"
-#213 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(5)"
-#214 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(5)"
-#215 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(5)"
-#216 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(5)"
-#217 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(5)"
-#218 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(5)"
-#219 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(5)"
-#220 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(5)"
-#221 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(5)"
-#222 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(5)"
-#223 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(5)"
-#224 Matcher Appverk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(5)"
-#225 Matcher Appverk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(5)"
-#226 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(5)" with "Array(5)" pattern
-#227 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(0)" does not match "@array@.isEmpty()".
-#228 Matcher Appverk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(5)"
-#229 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(5)" with "Array(5)" pattern
-#230 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) error: "Array(0)" does not match "@array@.isEmpty()".
-#231 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@integer@"
-#232 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "132" with "@integer@" pattern
-#233 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@integer@"
-#234 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@integer@"
-#235 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "132" with "@integer@" pattern
-#236 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@integer@"
-#237 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@integer@"
-#238 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@integer@"
-#239 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "@integer@"
-#240 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can match pattern "@integer@"
-#241 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher matching value "132" with "@integer@" pattern
-#242 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher successfully matched value "132" with "@integer@" pattern
-#243 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "132" with "@integer@" pattern
-#244 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "132" with "@integer@" pattern
-#245 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Michał"
-#246 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Michał" with "Michał" pattern
-#247 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Michał"
-#248 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Michał"
-#249 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Michał" with "Michał" pattern
-#250 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Michał"
-#251 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Michał"
-#252 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Michał"
-#253 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Michał"
-#254 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Michał"
-#255 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Michał"
-#256 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Michał"
-#257 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Michał"
-#258 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Michał"
-#259 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Michał"
-#260 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Michał"
-#261 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Michał"
-#262 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Michał"
-#263 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Michał" with "Michał" pattern
-#264 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Michał" with "Michał" pattern
-#265 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Michał" with "Michał" pattern
-#266 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Michał" with "Michał" pattern
-#267 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Dąbrowski"
-#268 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Dąbrowski" with "Dąbrowski" pattern
-#269 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "Dąbrowski"
-#270 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Dąbrowski"
-#271 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Dąbrowski" with "Dąbrowski" pattern
-#272 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Dąbrowski"
-#273 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Dąbrowski"
-#274 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "Dąbrowski"
-#275 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "Dąbrowski"
-#276 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Dąbrowski"
-#277 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Dąbrowski"
-#278 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Dąbrowski"
-#279 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Dąbrowski"
-#280 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Dąbrowski"
-#281 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "Dąbrowski"
-#282 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Dąbrowski"
-#283 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Dąbrowski"
-#284 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Dąbrowski"
-#285 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Dąbrowski" with "Dąbrowski" pattern
-#286 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Dąbrowski" with "Dąbrowski" pattern
-#287 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Dąbrowski" with "Dąbrowski" pattern
-#288 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Dąbrowski" with "Dąbrowski" pattern
-#289 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "expr(value == false)"
-#290 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "false" with "expr(value == false)" pattern
-#291 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "expr(value == false)"
-#292 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "expr(value == false)"
-#293 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "false" with "expr(value == false)" pattern
-#294 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "expr(value == false)"
-#295 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can match pattern "expr(value == false)"
-#296 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher matching value "false" with "expr(value == false)" pattern
-#297 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher successfully matched value "false" with "expr(value == false)" pattern
-#298 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "false" with "expr(value == false)" pattern
-#299 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "false" with "expr(value == false)" pattern
-#300 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@array@"
-#301 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(1)" with "@array@" pattern
-#302 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@array@"
-#303 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@array@"
-#304 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(1)" with "@array@" pattern
-#305 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@array@"
-#306 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@array@"
-#307 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@array@"
-#308 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can't match pattern "@array@"
-#309 Matcher Appverk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@array@"
-#310 Matcher Appverk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "@array@"
-#311 Matcher Appverk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "@array@"
-#312 Matcher Appverk\PHPMatcher\Matcher\NumberMatcher can't match pattern "@array@"
-#313 Matcher Appverk\PHPMatcher\Matcher\TimeMatcher can't match pattern "@array@"
-#314 Matcher Appverk\PHPMatcher\Matcher\DateMatcher can't match pattern "@array@"
-#315 Matcher Appverk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "@array@"
-#316 Matcher Appverk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "@array@"
-#317 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher can match pattern "@array@"
-#318 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher matching value "Array(1)" with "@array@" pattern
-#319 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher failed to match value "Array(1)" with "@array@" pattern
-#320 Matcher Appverk\PHPMatcher\Matcher\ScalarMatcher error: "Array(1)" does not match "@array@".
-#321 Matcher Appverk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "@array@"
-#322 Matcher Appverk\PHPMatcher\Matcher\UuidMatcher can't match pattern "@array@"
-#323 Matcher Appverk\PHPMatcher\Matcher\UlidMatcher can't match pattern "@array@"
-#324 Matcher Appverk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "@array@"
-#325 Matcher Appverk\PHPMatcher\Matcher\EnumMatcher can't match pattern "@array@"
-#326 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(1)" with "@array@" pattern
-#327 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(1)" does not match "@array@".
-#328 Matcher Appverk\PHPMatcher\Matcher\TextMatcher can match pattern "@array@"
-#329 Matcher Appverk\PHPMatcher\Matcher\TextMatcher matching value "Array(1)" with "@array@" pattern
-#330 Matcher Appverk\PHPMatcher\Matcher\TextMatcher failed to match value "Array(1)" with "@array@" pattern
-#331 Matcher Appverk\PHPMatcher\Matcher\TextMatcher error: array "Array(1)" is not a valid string.
-#332 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(1)" with "@array@" pattern
-#333 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) error: array "Array(1)" is not a valid string.
-#334 Matcher Appverk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(1)" with "@array@" pattern
-#335 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@string@"
-#336 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#337 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@string@"
-#338 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@string@"
-#339 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#340 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@string@"
-#341 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@string@"
-#342 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@string@"
-#343 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can match pattern "@string@"
-#344 Matcher Appverk\PHPMatcher\Matcher\StringMatcher matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#345 Matcher Appverk\PHPMatcher\Matcher\StringMatcher successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#346 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#347 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
-#348 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@string@"
-#349 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#350 Matcher Appverk\PHPMatcher\Matcher\OrMatcher can't match pattern "@string@"
-#351 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@string@"
-#352 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#353 Matcher Appverk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@string@"
-#354 Matcher Appverk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@string@"
-#355 Matcher Appverk\PHPMatcher\Matcher\NullMatcher can't match pattern "@string@"
-#356 Matcher Appverk\PHPMatcher\Matcher\StringMatcher can match pattern "@string@"
-#357 Matcher Appverk\PHPMatcher\Matcher\StringMatcher matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#358 Matcher Appverk\PHPMatcher\Matcher\StringMatcher successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#359 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#360 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
-#361 Matcher Appverk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(3)" with "Array(3)" pattern
-#362 Matcher Appverk\PHPMatcher\Matcher\JsonMatcher successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#363 Matcher Appverk\PHPMatcher\Matcher\ChainMatcher (all) successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
-#364 Matcher Appverk\PHPMatcher\Matcher successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#200 Matcher AppVerk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(0)" with "@array@.isEmpty()" pattern
+#201 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Array(5)"
+#202 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(5)" with "Array(5)" pattern
+#203 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Array(5)"
+#204 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Array(5)"
+#205 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(5)" with "Array(5)" pattern
+#206 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Array(5)"
+#207 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Array(5)"
+#208 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Array(5)"
+#209 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Array(5)"
+#210 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Array(5)"
+#211 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Array(5)"
+#212 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Array(5)"
+#213 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Array(5)"
+#214 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Array(5)"
+#215 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Array(5)"
+#216 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Array(5)"
+#217 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Array(5)"
+#218 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can't match pattern "Array(5)"
+#219 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "Array(5)"
+#220 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "Array(5)"
+#221 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "Array(5)"
+#222 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "Array(5)"
+#223 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "Array(5)"
+#224 Matcher AppVerk\PHPMatcher\Matcher\TaxNumberMatcher can't match pattern "Array(5)"
+#225 Matcher AppVerk\PHPMatcher\Matcher\RegonMatcher can't match pattern "Array(5)"
+#226 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(5)" with "Array(5)" pattern
+#227 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(0)" does not match "@array@.isEmpty()".
+#228 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher can't match pattern "Array(5)"
+#229 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(5)" with "Array(5)" pattern
+#230 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) error: "Array(0)" does not match "@array@.isEmpty()".
+#231 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@integer@"
+#232 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "132" with "@integer@" pattern
+#233 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@integer@"
+#234 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@integer@"
+#235 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "132" with "@integer@" pattern
+#236 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@integer@"
+#237 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@integer@"
+#238 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@integer@"
+#239 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "@integer@"
+#240 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can match pattern "@integer@"
+#241 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher matching value "132" with "@integer@" pattern
+#242 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher successfully matched value "132" with "@integer@" pattern
+#243 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "132" with "@integer@" pattern
+#244 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "132" with "@integer@" pattern
+#245 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Michał"
+#246 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Michał" with "Michał" pattern
+#247 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Michał"
+#248 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Michał"
+#249 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Michał" with "Michał" pattern
+#250 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Michał"
+#251 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Michał"
+#252 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Michał"
+#253 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Michał"
+#254 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Michał"
+#255 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Michał"
+#256 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Michał"
+#257 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Michał"
+#258 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Michał"
+#259 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Michał"
+#260 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Michał"
+#261 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Michał"
+#262 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Michał"
+#263 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Michał" with "Michał" pattern
+#264 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Michał" with "Michał" pattern
+#265 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Michał" with "Michał" pattern
+#266 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Michał" with "Michał" pattern
+#267 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "Dąbrowski"
+#268 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Dąbrowski" with "Dąbrowski" pattern
+#269 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "Dąbrowski"
+#270 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "Dąbrowski"
+#271 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Dąbrowski" with "Dąbrowski" pattern
+#272 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "Dąbrowski"
+#273 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "Dąbrowski"
+#274 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "Dąbrowski"
+#275 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "Dąbrowski"
+#276 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "Dąbrowski"
+#277 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "Dąbrowski"
+#278 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "Dąbrowski"
+#279 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "Dąbrowski"
+#280 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "Dąbrowski"
+#281 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "Dąbrowski"
+#282 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "Dąbrowski"
+#283 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "Dąbrowski"
+#284 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "Dąbrowski"
+#285 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Dąbrowski" with "Dąbrowski" pattern
+#286 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher successfully matched value "Dąbrowski" with "Dąbrowski" pattern
+#287 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "Dąbrowski" with "Dąbrowski" pattern
+#288 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "Dąbrowski" with "Dąbrowski" pattern
+#289 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "expr(value == false)"
+#290 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "false" with "expr(value == false)" pattern
+#291 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "expr(value == false)"
+#292 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "expr(value == false)"
+#293 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "false" with "expr(value == false)" pattern
+#294 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "expr(value == false)"
+#295 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can match pattern "expr(value == false)"
+#296 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher matching value "false" with "expr(value == false)" pattern
+#297 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher successfully matched value "false" with "expr(value == false)" pattern
+#298 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "false" with "expr(value == false)" pattern
+#299 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "false" with "expr(value == false)" pattern
+#300 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@array@"
+#301 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "Array(1)" with "@array@" pattern
+#302 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@array@"
+#303 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@array@"
+#304 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "Array(1)" with "@array@" pattern
+#305 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@array@"
+#306 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@array@"
+#307 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@array@"
+#308 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can't match pattern "@array@"
+#309 Matcher AppVerk\PHPMatcher\Matcher\IntegerMatcher can't match pattern "@array@"
+#310 Matcher AppVerk\PHPMatcher\Matcher\BooleanMatcher can't match pattern "@array@"
+#311 Matcher AppVerk\PHPMatcher\Matcher\DoubleMatcher can't match pattern "@array@"
+#312 Matcher AppVerk\PHPMatcher\Matcher\NumberMatcher can't match pattern "@array@"
+#313 Matcher AppVerk\PHPMatcher\Matcher\TimeMatcher can't match pattern "@array@"
+#314 Matcher AppVerk\PHPMatcher\Matcher\DateMatcher can't match pattern "@array@"
+#315 Matcher AppVerk\PHPMatcher\Matcher\DateTimeMatcher can't match pattern "@array@"
+#316 Matcher AppVerk\PHPMatcher\Matcher\TimeZoneMatcher can't match pattern "@array@"
+#317 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher can match pattern "@array@"
+#318 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher matching value "Array(1)" with "@array@" pattern
+#319 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher failed to match value "Array(1)" with "@array@" pattern
+#320 Matcher AppVerk\PHPMatcher\Matcher\ScalarMatcher error: "Array(1)" does not match "@array@".
+#321 Matcher AppVerk\PHPMatcher\Matcher\WildcardMatcher can't match pattern "@array@"
+#322 Matcher AppVerk\PHPMatcher\Matcher\UuidMatcher can't match pattern "@array@"
+#323 Matcher AppVerk\PHPMatcher\Matcher\UlidMatcher can't match pattern "@array@"
+#324 Matcher AppVerk\PHPMatcher\Matcher\JsonObjectMatcher can't match pattern "@array@"
+#325 Matcher AppVerk\PHPMatcher\Matcher\EnumMatcher can't match pattern "@array@"
+#326 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) failed to match value "Array(1)" with "@array@" pattern
+#327 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) error: "Array(1)" does not match "@array@".
+#328 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher can match pattern "@array@"
+#329 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher matching value "Array(1)" with "@array@" pattern
+#330 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher failed to match value "Array(1)" with "@array@" pattern
+#331 Matcher AppVerk\PHPMatcher\Matcher\TextMatcher error: array "Array(1)" is not a valid string.
+#332 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) failed to match value "Array(1)" with "@array@" pattern
+#333 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) error: array "Array(1)" is not a valid string.
+#334 Matcher AppVerk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(1)" with "@array@" pattern
+#335 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@string@"
+#336 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#337 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@string@"
+#338 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@string@"
+#339 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#340 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@string@"
+#341 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@string@"
+#342 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@string@"
+#343 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can match pattern "@string@"
+#344 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher matching value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#345 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#346 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#347 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "http://example.com/api/users/1?limit=2" with "@string@" pattern
+#348 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) can match pattern "@string@"
+#349 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#350 Matcher AppVerk\PHPMatcher\Matcher\OrMatcher can't match pattern "@string@"
+#351 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) can match pattern "@string@"
+#352 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#353 Matcher AppVerk\PHPMatcher\Matcher\CallbackMatcher can't match pattern "@string@"
+#354 Matcher AppVerk\PHPMatcher\Matcher\ExpressionMatcher can't match pattern "@string@"
+#355 Matcher AppVerk\PHPMatcher\Matcher\NullMatcher can't match pattern "@string@"
+#356 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher can match pattern "@string@"
+#357 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher matching value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#358 Matcher AppVerk\PHPMatcher\Matcher\StringMatcher successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#359 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (scalars) successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#360 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (array) successfully matched value "http://example.com/api/users/3?limit=2" with "@string@" pattern
+#361 Matcher AppVerk\PHPMatcher\Matcher\ArrayMatcher successfully matched value "Array(3)" with "Array(3)" pattern
+#362 Matcher AppVerk\PHPMatcher\Matcher\JsonMatcher successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#363 Matcher AppVerk\PHPMatcher\Matcher\ChainMatcher (all) successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern
+#364 Matcher AppVerk\PHPMatcher\Matcher successfully matched value "{"users":[{"id":131,"firstName":"Norbert","lastName":"Orzechowicz","enabled":true,"roles":[]},{"id":132,"firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":false,"roles":["ROLE_DEVELOPER"]}],"prevPage":"http:\/\/example.com\/api\/users\/1?limit=2","nextPage":"http:\/\/example.com\/api\/users\/3?limit=2"}" with "{"users":[{"id":"@integer@","firstName":"Norbert","lastName":"Orzechowicz","enabled":"@boolean@","roles":"@array@.isEmpty()"},{"id":"@integer@","firstName":"Micha\u0142","lastName":"D\u0105browski","enabled":"expr(value == false)","roles":"@array@"}],"prevPage":"@string@","nextPage":"@string@"}" pattern

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
+namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
 use Aeon\Calendar\Gregorian\TimeZone;
-use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
+use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
 final class IsTzOffset implements PatternExpander

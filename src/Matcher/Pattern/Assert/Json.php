@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern\Assert;
+namespace AppVerk\PHPMatcher\Matcher\Pattern\Assert;
 
 final class Json
 {
