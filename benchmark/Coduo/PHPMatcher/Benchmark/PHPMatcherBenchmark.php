@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Benchmark;
+namespace AppVerk\PHPMatcher\Benchmark;
 
 use Appverk\PHPMatcher\PHPMatcher;
 

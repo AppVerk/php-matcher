@@ -32,18 +32,18 @@
         "symfony/expression-language": "^2.3|^3.0|^4.0|^5.0"
     },
     "suggest": {
-        "openlss/lib-array2xml": "In order ot use Appverk\\PHPMatcher\\Matcher\\XmlMatcher",
-        "symfony/expression-language" : "In order to use Appverk\\PHPMatcher\\Matcher\\ExpressionMatcher"
+        "openlss/lib-array2xml": "In order ot use AppVerk\\PHPMatcher\\Matcher\\XmlMatcher",
+        "symfony/expression-language" : "In order to use AppVerk\\PHPMatcher\\Matcher\\ExpressionMatcher"
     },
     "autoload": {
         "psr-4": {
-            "Appverk\\PHPMatcher\\": "src/"
+            "AppVerk\\PHPMatcher\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Appverk\\PHPMatcher\\Tests\\": "tests/",
-            "Appverk\\PHPMatcher\\Benchmark\\": "benchmark/Appverk/PHPMatcher/Benchmark/"
+            "AppVerk\\PHPMatcher\\Tests\\": "tests/",
+            "AppVerk\\PHPMatcher\\Benchmark\\": "benchmark/Coduo/PHPMatcher/Benchmark/"
         }
     },
     "config": {
