@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher;
+namespace AppVerk\PHPMatcher\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Exception\Exception;
-use Appverk\PHPMatcher\Matcher\ArrayMatcher\Diff;
-use Appverk\PHPMatcher\Matcher\ArrayMatcher\Difference;
-use Appverk\PHPMatcher\Matcher\ArrayMatcher\StringDifference;
-use Appverk\PHPMatcher\Matcher\ArrayMatcher\ValuePatternDifference;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Exception\Exception;
+use AppVerk\PHPMatcher\Matcher\ArrayMatcher\Diff;
+use AppVerk\PHPMatcher\Matcher\ArrayMatcher\Difference;
+use AppVerk\PHPMatcher\Matcher\ArrayMatcher\StringDifference;
+use AppVerk\PHPMatcher\Matcher\ArrayMatcher\ValuePatternDifference;
+use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 
 final class ArrayMatcher extends Matcher

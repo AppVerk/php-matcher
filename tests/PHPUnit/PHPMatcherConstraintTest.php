@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\PHPUnit;
+namespace AppVerk\PHPMatcher\Tests\PHPUnit;
 
-use Appverk\PHPMatcher\PHPUnit\PHPMatcherConstraint;
+use AppVerk\PHPMatcher\PHPUnit\PHPMatcherConstraint;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\ExpectationFailedException;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\ScalarMatcher;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\ScalarMatcher;
 use PHPUnit\Framework\TestCase;
 
 class ScalarMatcherTest extends TestCase

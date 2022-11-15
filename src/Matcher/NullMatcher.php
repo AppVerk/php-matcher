@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher;
+namespace AppVerk\PHPMatcher\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Backtrace;
 use Coduo\ToString\StringConverter;
 
 final class NullMatcher extends Matcher

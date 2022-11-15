@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Backtrace;
+namespace AppVerk\PHPMatcher\Backtrace;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Value\SingleLineString;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Value\SingleLineString;
 use Coduo\ToString\StringConverter;
 
 final class InMemoryBacktrace implements Backtrace

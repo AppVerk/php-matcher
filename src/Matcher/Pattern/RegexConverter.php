@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern;
+namespace AppVerk\PHPMatcher\Matcher\Pattern;
 
-use Appverk\PHPMatcher\Exception\UnknownTypeException;
-use Appverk\PHPMatcher\Matcher\UlidMatcher;
-use Appverk\PHPMatcher\Matcher\UuidMatcher;
+use AppVerk\PHPMatcher\Exception\UnknownTypeException;
+use AppVerk\PHPMatcher\Matcher\UlidMatcher;
+use AppVerk\PHPMatcher\Matcher\UuidMatcher;
 
 final class RegexConverter
 {

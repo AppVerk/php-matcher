@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\Pattern\Expander;
+namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
-use Appverk\PHPMatcher\Factory\MatcherFactory;
-use Appverk\PHPMatcher\Matcher;
+use AppVerk\PHPMatcher\Factory\MatcherFactory;
+use AppVerk\PHPMatcher\Matcher;
 
 final class ExpanderMatch implements Matcher\Pattern\PatternExpander
 {

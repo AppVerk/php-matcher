@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Lexer;
-use Appverk\PHPMatcher\Matcher;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Lexer;
+use AppVerk\PHPMatcher\Matcher;
+use AppVerk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class TextMatcherTest extends TestCase
 {
-    private ?\Appverk\PHPMatcher\Matcher\TextMatcher $matcher = null;
+    private ?\AppVerk\PHPMatcher\Matcher\TextMatcher $matcher = null;
 
     public function setUp() : void
     {

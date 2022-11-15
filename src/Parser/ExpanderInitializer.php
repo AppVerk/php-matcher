@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Parser;
+namespace AppVerk\PHPMatcher\Parser;
 
-use Appverk\PHPMatcher\AST\Expander;
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Exception\InvalidArgumentException;
-use Appverk\PHPMatcher\Exception\InvalidExpanderTypeException;
-use Appverk\PHPMatcher\Exception\UnknownExpanderClassException;
-use Appverk\PHPMatcher\Exception\UnknownExpanderException;
-use Appverk\PHPMatcher\Matcher\Pattern;
-use Appverk\PHPMatcher\Matcher\Pattern\PatternExpander;
+use AppVerk\PHPMatcher\AST\Expander;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Exception\InvalidArgumentException;
+use AppVerk\PHPMatcher\Exception\InvalidExpanderTypeException;
+use AppVerk\PHPMatcher\Exception\UnknownExpanderClassException;
+use AppVerk\PHPMatcher\Exception\UnknownExpanderException;
+use AppVerk\PHPMatcher\Matcher\Pattern;
+use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 
 final class ExpanderInitializer
 {

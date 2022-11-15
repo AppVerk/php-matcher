@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher;
+namespace AppVerk\PHPMatcher\Matcher;
 
 interface ValueMatcher
 {

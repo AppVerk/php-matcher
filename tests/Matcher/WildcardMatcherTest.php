@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\WildcardMatcher;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\WildcardMatcher;
 use PHPUnit\Framework\TestCase;
 
 class WildcardMatcherTest extends TestCase

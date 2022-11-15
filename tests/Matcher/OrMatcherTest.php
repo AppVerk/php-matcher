@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace\VoidBacktrace;
-use Appverk\PHPMatcher\Factory\MatcherFactory;
-use Appverk\PHPMatcher\Matcher;
+use AppVerk\PHPMatcher\Backtrace\VoidBacktrace;
+use AppVerk\PHPMatcher\Factory\MatcherFactory;
+use AppVerk\PHPMatcher\Matcher;
 use PHPUnit\Framework\TestCase;
 
 class OrMatcherTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher\ArrayMatcher;
+namespace AppVerk\PHPMatcher\Matcher\ArrayMatcher;
 
 final class Diff
 {

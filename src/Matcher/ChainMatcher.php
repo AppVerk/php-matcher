@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Matcher;
+namespace AppVerk\PHPMatcher\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Matcher\Pattern\Assert\Json;
-use Appverk\PHPMatcher\Value\SingleLineString;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
+use AppVerk\PHPMatcher\Value\SingleLineString;
 use Coduo\ToString\StringConverter;
 
 final class ChainMatcher extends Matcher

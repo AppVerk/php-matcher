@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Appverk\PHPMatcher\Tests\Matcher;
+namespace AppVerk\PHPMatcher\Tests\Matcher;
 
-use Appverk\PHPMatcher\Backtrace;
-use Appverk\PHPMatcher\Lexer;
-use Appverk\PHPMatcher\Matcher\BooleanMatcher;
-use Appverk\PHPMatcher\Parser;
+use AppVerk\PHPMatcher\Backtrace;
+use AppVerk\PHPMatcher\Lexer;
+use AppVerk\PHPMatcher\Matcher\BooleanMatcher;
+use AppVerk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
 
 class BooleanMatcherTest extends TestCase
