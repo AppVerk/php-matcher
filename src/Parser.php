@@ -8,6 +8,7 @@ use AppVerk\PHPMatcher\Exception\Exception;
 use AppVerk\PHPMatcher\Exception\PatternException;
 use AppVerk\PHPMatcher\Matcher\Pattern;
 use AppVerk\PHPMatcher\Parser\ExpanderInitializer;
+use Doctrine\Common\Lexer\Token;
 
 final class Parser
 {
@@ -259,10 +260,10 @@ final class Parser
     }
 
     /**
-     * @param array $unexpectedToken
+     * @param Token $unexpectedToken
      * @param string $expected
      */
-    private function unexpectedSyntaxError(array $unexpectedToken, string $expected = null) : string
+    private function unexpectedSyntaxError(Token $unexpectedToken, string $expected = null) : string
     {
         $tokenPos = (isset($unexpectedToken['position'])) ? $unexpectedToken['position'] : '-1';
         $message  = \sprintf('line 0, col %d: Error: ', $tokenPos);

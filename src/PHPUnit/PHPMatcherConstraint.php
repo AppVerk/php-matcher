@@ -58,7 +58,7 @@ final class PHPMatcherConstraint extends Constraint
     /**
      * {@inheritdoc}
      */
-    protected function fail($other, $description, ComparisonFailure $comparisonFailure = null) : void
+    protected function fail(mixed $other, string $description, ?ComparisonFailure $comparisonFailure = null) : never
     {
         parent::fail($other, $description, $comparisonFailure ?? $this->createComparisonFailure($other));
     }
@@ -86,7 +86,6 @@ final class PHPMatcherConstraint extends Constraint
             \json_decode($other),
             Json::prettify($patternJson),
             Json::prettify($otherJson),
-            false,
             'Failed asserting that the pattern matches the given value.'
         );
     }
