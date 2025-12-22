@@ -8,9 +8,9 @@ interface Pattern
 {
     public function addExpander(PatternExpander $expander);
 
-    public function matchExpanders($value) : bool;
+    public function matchExpanders(mixed $value): bool;
 
-    public function getError() : ?string;
+    public function getError(): ?string;
 
-    public function hasExpander(string $expanderName) : bool;
+    public function hasExpander(string $expanderName): bool;
 }

@@ -7,39 +7,41 @@ namespace AppVerk\PHPMatcher\Matcher;
 use AppVerk\PHPMatcher\Backtrace;
 use Coduo\ToString\StringConverter;
 
+use function gettype;
+use function is_string;
+use function sprintf;
+
 class TaxNumberMatcher extends Matcher
 {
     public const PATTERN = 'tax_number';
-    private const REGEX = '/^[0-9]{10}$/';
+    private const string REGEX = '/^\d{10}$/';
 
-    private Backtrace $backtrace;
-
-    public function __construct(Backtrace $backtrace)
+    public function __construct(private readonly Backtrace $backtrace)
     {
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern): bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
-        if (!\is_string($value)) {
-            $this->error = \sprintf('%s "%s" is not a valid tax number.', \gettype($value), new StringConverter($value));
+        if (!is_string($value)) {
+            $this->error = sprintf('%s "%s" is not a valid tax number.', gettype($value), new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
         $value = preg_replace(['/-/', '/ /'], '', $value);
 
-        if (1 !== preg_match(self::REGEX, $value)) {
-            $this->error = \sprintf('"%s" is not a valid tax number.', $value);
+        if (1 !== preg_match(self::REGEX, (string) $value)) {
+            $this->error = sprintf('"%s" is not a valid tax number.', $value);
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
         if (false === $this->validateTaxNumber($value)) {
-            $this->error = \sprintf('"%s" is not a valid tax number.', $value);
+            $this->error = sprintf('"%s" is not a valid tax number.', $value);
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -50,7 +52,8 @@ class TaxNumberMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern): bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
         if (!is_string($pattern)) {
             $this->backtrace->matcherCanMatch(self::class, $pattern, false);
@@ -65,17 +68,17 @@ class TaxNumberMatcher extends Matcher
     {
         $digits = str_split($taxNumber);
         $checksum = (
-            6 * intval($digits[0]) +
-            5 * intval($digits[1]) +
-            7 * intval($digits[2]) +
-            2 * intval($digits[3]) +
-            3 * intval($digits[4]) +
-            4 * intval($digits[5]) +
-            5 * intval($digits[6]) +
-            6 * intval($digits[7]) +
-            7 * intval($digits[8])
-            ) % 11;
+            6 * (int) $digits[0] +
+            5 * (int) $digits[1] +
+            7 * (int) $digits[2] +
+            2 * (int) $digits[3] +
+            3 * (int) $digits[4] +
+            4 * (int) $digits[5] +
+            5 * (int) $digits[6] +
+            6 * (int) $digits[7] +
+            7 * (int) $digits[8]
+        ) % 11;
 
-        return intval($digits[9]) == $checksum;
+        return (int) $digits[9] == $checksum;
     }
 }

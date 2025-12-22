@@ -8,29 +8,26 @@ use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 
+use function gettype;
+use function is_int;
+use function is_string;
+use function sprintf;
+
 final class IntegerMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const PATTERN = 'integer';
+    public const string PATTERN = 'integer';
 
-    private Backtrace $backtrace;
-
-    private Parser $parser;
-
-    public function __construct(Backtrace $backtrace, Parser $parser)
+    public function __construct(private readonly Backtrace $backtrace, private readonly Parser $parser)
     {
-        $this->backtrace = $backtrace;
-        $this->parser = $parser;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
-        if (!\is_int($value)) {
-            $this->error = \sprintf('%s "%s" is not a valid integer.', \gettype($value), new StringConverter($value));
+        if (!is_int($value)) {
+            $this->error = sprintf('%s "%s" is not a valid integer.', gettype($value), new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -50,9 +47,10 @@ final class IntegerMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        if (!\is_string($pattern)) {
+        if (!is_string($pattern)) {
             $this->backtrace->matcherCanMatch(self::class, $pattern, false);
 
             return false;

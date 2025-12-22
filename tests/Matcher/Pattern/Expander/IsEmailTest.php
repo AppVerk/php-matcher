@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
 use PHPUnit\Framework\TestCase;
@@ -20,10 +22,8 @@ class IsEmailTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesEmailsProvider
-     */
-    public function test_emails($email, $expectedResult) : void
+    #[DataProvider('examplesEmailsProvider')]
+    public function testEmails($email, $expectedResult): void
     {
         $expander = new IsEmail();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

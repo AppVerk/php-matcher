@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Matcher\ArrayMatcher;
 
-final class StringDifference implements Difference
+final readonly class StringDifference implements Difference
 {
-    private string $description;
-
-    public function __construct(string $description)
+    public function __construct(private string $description)
     {
-        $this->description = $description;
     }
 
-    public function format() : string
+    #[\Override]
+    public function format(): string
     {
         return $this->description;
     }

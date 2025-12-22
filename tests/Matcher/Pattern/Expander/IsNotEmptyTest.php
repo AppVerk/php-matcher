@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsNotEmpty;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class IsNotEmptyTest extends TestCase
@@ -15,17 +18,15 @@ class IsNotEmptyTest extends TestCase
         return [
             ['lorem', true],
             ['0', true],
-            [new \DateTime(), true],
+            [new DateTime(), true],
             ['', false],
             [null, false],
             [[], false],
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_examples_not_ignoring_case($value, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testExamplesNotIgnoringCase($value, $expectedResult): void
     {
         $expander = new IsNotEmpty();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

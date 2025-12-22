@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher\DateTimeMatcher;
 use AppVerk\PHPMatcher\Parser;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class DateTimeMatcherTest extends TestCase
 {
@@ -57,7 +60,7 @@ class DateTimeMatcherTest extends TestCase
     public static function negativeMatchDescription()
     {
         return [
-            [new \stdClass,  '@datetime@', 'object "\\stdClass" is not a valid string.'],
+            [new stdClass(),  '@datetime@', 'object "\\stdClass" is not a valid string.'],
             [1.1, '@integer@', 'double "1.1" is not a valid string.'],
             [false, '@double@', 'boolean "false" is not a valid string.'],
             [1, '@array@', 'integer "1" is not a valid string.'],
@@ -65,54 +68,44 @@ class DateTimeMatcherTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->matcher = new DateTimeMatcher(
             $this->backtrace = new Backtrace\InMemoryBacktrace(),
-            new Parser(new Lexer(), new Parser\ExpanderInitializer($this->backtrace))
+            new Parser(new Lexer(), new Parser\ExpanderInitializer($this->backtrace)),
         );
     }
 
-    /**
-     * @dataProvider positiveCanMatchData
-     */
-    public function test_positive_can_matches($pattern) : void
+    #[DataProvider('positiveCanMatchData')]
+    public function testPositiveCanMatches($pattern): void
     {
         $this->assertTrue($this->matcher->canMatch($pattern));
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    /**
-     * @dataProvider negativeCanMatchData
-     */
-    public function test_negative_can_matches($pattern) : void
+    #[DataProvider('negativeCanMatchData')]
+    public function testNegativeCanMatches($pattern): void
     {
         $this->assertFalse($this->matcher->canMatch($pattern));
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    /**
-     * @dataProvider positiveMatchData
-     */
-    public function test_positive_match($value, $pattern) : void
+    #[DataProvider('positiveMatchData')]
+    public function testPositiveMatch($value, $pattern): void
     {
         $this->assertTrue($this->matcher->match($value, $pattern));
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    /**
-     * @dataProvider negativeMatchData
-     */
-    public function test_negative_match($value, $pattern) : void
+    #[DataProvider('negativeMatchData')]
+    public function testNegativeMatch($value, $pattern): void
     {
         $this->assertFalse($this->matcher->match($value, $pattern));
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    /**
-     * @dataProvider negativeMatchDescription
-     */
-    public function test_negative_match_description($value, $pattern, $error) : void
+    #[DataProvider('negativeMatchDescription')]
+    public function testNegativeMatchDescription($value, $pattern, $error): void
     {
         $this->matcher->match($value, $pattern);
         $this->assertEquals($error, $this->matcher->getError());

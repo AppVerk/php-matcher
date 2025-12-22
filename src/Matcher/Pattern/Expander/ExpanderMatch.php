@@ -4,46 +4,35 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
+use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use AppVerk\PHPMatcher\Factory\MatcherFactory;
 use AppVerk\PHPMatcher\Matcher;
 
-final class ExpanderMatch implements Matcher\Pattern\PatternExpander
+final class ExpanderMatch implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'match';
+    public const string NAME = 'match';
 
     private ?Matcher $matcher = null;
 
-    /**
-     * @var null|array|string
-     */
-    private $pattern;
-
-    /**
-     * @param null|array|string $pattern
-     */
-    public function __construct($pattern)
+    
+    public function __construct(private $pattern)
     {
-        $this->pattern = $pattern;
     }
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
 
-        if ($this->matcher === null) {
+        if (!$this->matcher instanceof Matcher) {
             $this->matcher = (new MatcherFactory())->createMatcher($this->backtrace);
         }
 
@@ -58,7 +47,8 @@ final class ExpanderMatch implements Matcher\Pattern\PatternExpander
         return $result;
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->matcher->getError();
     }

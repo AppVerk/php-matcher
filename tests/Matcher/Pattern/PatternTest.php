@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmail;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmpty;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Optional;
@@ -25,18 +27,16 @@ class PatternTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->pattern = new TypePattern('dummy');
-        $this->pattern->addExpander(new isEmail());
-        $this->pattern->addExpander(new isEmpty());
+        $this->pattern->addExpander(new IsEmail());
+        $this->pattern->addExpander(new IsEmpty());
         $this->pattern->addExpander(new Optional());
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_has_expander($expander, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testHasExpander($expander, $expectedResult): void
     {
         $this->assertEquals($expectedResult, $this->pattern->hasExpander($expander));
     }

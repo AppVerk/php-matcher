@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsTzOffset;
 use PHPUnit\Framework\TestCase;
@@ -22,10 +24,8 @@ class IsTzOffsetTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesDatesProvider
-     */
-    public function test_dates(string $date, bool $expectedResult, ?string $errorMessage = null) : void
+    #[DataProvider('examplesDatesProvider')]
+    public function testDates(string $date, bool $expectedResult, ?string $errorMessage = null): void
     {
         $expander = new IsTzOffset();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

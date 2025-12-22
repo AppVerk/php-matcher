@@ -6,29 +6,23 @@ namespace AppVerk\PHPMatcher\Matcher;
 
 use AppVerk\PHPMatcher\Backtrace;
 
+use function is_string;
+
 final class OrMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const MATCH_PATTERN = "/\|\|/";
+    public const string MATCH_PATTERN = "/\|\|/";
 
-    private Backtrace $backtrace;
-
-    private ChainMatcher $chainMatcher;
-
-    public function __construct(Backtrace $backtrace, ChainMatcher $chainMatcher)
+    public function __construct(private readonly Backtrace $backtrace, private readonly ChainMatcher $chainMatcher)
     {
-        $this->chainMatcher = $chainMatcher;
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
-        $patterns = \explode('||', $pattern);
-        $patterns = \array_map('trim', $patterns);
+        $patterns = explode('||', (string) $pattern);
+        $patterns = array_map('trim', $patterns);
 
         foreach ($patterns as $childPattern) {
             if ($this->matchChild($value, $childPattern)) {
@@ -43,15 +37,16 @@ final class OrMatcher extends Matcher
         return false;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        $result = \is_string($pattern) && 0 !== \preg_match_all(self::MATCH_PATTERN, $pattern, $matches);
+        $result = is_string($pattern) && 0 !== preg_match_all(self::MATCH_PATTERN, $pattern, $matches);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);
 
         return $result;
     }
 
-    private function matchChild($value, $pattern) : bool
+    private function matchChild($value, $pattern): bool
     {
         if (!$this->chainMatcher->canMatch($pattern)) {
             return false;

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace\VoidBacktrace;
 use AppVerk\PHPMatcher\Factory\MatcherFactory;
 use AppVerk\PHPMatcher\Matcher;
@@ -19,11 +21,11 @@ class OrMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 1,
-                    'lastName' => 2,
+                    'lastName'  => 2,
                 ],
             ],
             true,
@@ -36,7 +38,7 @@ class OrMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => '@string@',
-                    'lastName' => '@null@||@string@||@integer@',
+                    'lastName'  => '@null@||@string@||@integer@',
                 ],
                 '@...@',
             ],
@@ -82,11 +84,11 @@ class OrMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 'Michał',
-                    'lastName' => 'Dąbrowski',
+                    'lastName'  => 'Dąbrowski',
                 ],
             ],
             true,
@@ -99,11 +101,11 @@ class OrMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 'Pablo',
-                    'lastName' => '@integer@||@null@||@double@',
+                    'lastName'  => '@integer@||@null@||@double@',
                 ],
             ],
             true,
@@ -124,35 +126,31 @@ class OrMatcherTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $factory = new MatcherFactory();
         $this->matcher = $factory->createMatcher(new VoidBacktrace());
     }
 
-    /**
-     * @dataProvider positiveMatchData
-     */
-    public function test_positive_match_arrays($value, $pattern) : void
+    #[DataProvider('positiveMatchData')]
+    public function testPositiveMatchArrays($value, $pattern): void
     {
         $this->assertTrue(
             $this->matcher->match($value, $pattern),
-            (string) $this->matcher->getError()
+            (string) $this->matcher->getError(),
         );
     }
 
-    /**
-     * @dataProvider negativeMatchData
-     */
-    public function test_negative_match_arrays($value, $pattern) : void
+    #[DataProvider('negativeMatchData')]
+    public function testNegativeMatchArrays($value, $pattern): void
     {
         $this->assertFalse(
             $this->matcher->match($value, $pattern),
-            (string) $this->matcher->getError()
+            (string) $this->matcher->getError(),
         );
     }
 
-    public function test_whitespaces_trim_after_splitting() : void
+    public function testWhitespacesTrimAfterSplitting(): void
     {
         $this->assertTrue(
             $this->matcher->match(
@@ -161,9 +159,9 @@ class OrMatcherTest extends TestCase
                 ],
                 [
                     'test' => ' @integer@ || @null@ ',
-                ]
+                ],
             ),
-            (string) $this->matcher->getError()
+            (string) $this->matcher->getError(),
         );
     }
 }

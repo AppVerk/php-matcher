@@ -6,36 +6,41 @@ namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 
 use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
+use Exception;
+
+use function is_string;
+use function sprintf;
+
+use const FILTER_VALIDATE_URL;
 
 final class IsUrl implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'isUrl';
+    public const string NAME = 'isUrl';
 
     private ?string $error = null;
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
 
-        if (!\is_string($value)) {
-            $this->error = \sprintf('IsUrl expander require "string", got "%s".', new StringConverter($value));
+        if (!is_string($value)) {
+            $this->error = sprintf('IsUrl expander require "string", got "%s".', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
         }
 
         if (!$this->matchValue($value)) {
-            $this->error = \sprintf('string "%s" is not a valid URL.', $value);
+            $this->error = sprintf('string "%s" is not a valid URL.', $value);
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
@@ -46,16 +51,17 @@ final class IsUrl implements PatternExpander
         return true;
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    private function matchValue(string $value) : bool
+    private function matchValue(string $value): bool
     {
         try {
-            return false !== \filter_var($value, FILTER_VALIDATE_URL);
-        } catch (\Exception $exception) {
+            return false !== filter_var($value, FILTER_VALIDATE_URL);
+        } catch (Exception) {
             return false;
         }
     }

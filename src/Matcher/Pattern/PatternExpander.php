@@ -8,11 +8,11 @@ use AppVerk\PHPMatcher\Backtrace;
 
 interface PatternExpander
 {
-    public static function is(string $name) : bool;
+    public static function is(string $name): bool;
 
-    public function setBacktrace(Backtrace $backtrace) : void;
+    public function setBacktrace(Backtrace $backtrace): void;
 
-    public function match($value) : bool;
+    public function match(mixed $value): bool;
 
-    public function getError() : ?string;
+    public function getError(): ?string;
 }

@@ -10,17 +10,16 @@ final class Optional implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'optional';
+    public const string NAME = 'optional';
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
         $this->backtrace->expanderSucceed(self::NAME, $value);
@@ -28,7 +27,8 @@ final class Optional implements PatternExpander
         return true;
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return null;
     }

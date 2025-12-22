@@ -6,31 +6,32 @@ namespace AppVerk\PHPMatcher\Tests\Matcher;
 
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\CallbackMatcher;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class CallbackMatcherTest extends TestCase
 {
-    public function test_positive_can_match() : void
+    public function testPositiveCanMatch(): void
     {
         $matcher = new CallbackMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->canMatch(fn () => true));
     }
 
-    public function test_negative_can_match() : void
+    public function testNegativeCanMatch(): void
     {
         $matcher = new CallbackMatcher(new Backtrace\InMemoryBacktrace());
-        $this->assertFalse($matcher->canMatch(new \DateTime()));
+        $this->assertFalse($matcher->canMatch(new DateTime()));
         $this->assertFalse($matcher->canMatch('SIN'));
     }
 
-    public function test_positive_matches() : void
+    public function testPositiveMatches(): void
     {
         $matcher = new CallbackMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->match(2, fn ($value) => true));
         $this->assertTrue($matcher->match('true', fn ($value) => $value));
     }
 
-    public function test_negative_matches() : void
+    public function testNegativeMatches(): void
     {
         $matcher = new CallbackMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->match(2, fn ($value) => false));

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\StartsWith;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class StartsWithTest extends TestCase
@@ -34,34 +37,28 @@ class StartsWithTest extends TestCase
     {
         return [
             ['lorem', 'ipsum lorem', "string \"ipsum lorem\" doesn't starts with string \"lorem\"."],
-            ['lorem', new \DateTime(), 'StartsWith expander require "string", got "\\DateTime".'],
+            ['lorem', new DateTime(), 'StartsWith expander require "string", got "\\DateTime".'],
         ];
     }
 
-    /**
-     * @dataProvider notIgnoringCaseExamplesProvider
-     */
-    public function test_examples_not_ignoring_case($stringBeginning, $value, $expectedResult) : void
+    #[DataProvider('notIgnoringCaseExamplesProvider')]
+    public function testExamplesNotIgnoringCase($stringBeginning, $value, $expectedResult): void
     {
         $expander = new StartsWith($stringBeginning);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($value));
     }
 
-    /**
-     * @dataProvider ignoringCaseExamplesProvider
-     */
-    public function test_examples_ignoring_case($stringBeginning, $value) : void
+    #[DataProvider('ignoringCaseExamplesProvider')]
+    public function testExamplesIgnoringCase($stringBeginning, $value): void
     {
         $expander = new StartsWith($stringBeginning, true);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($expander->match($value));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($stringBeginning, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($stringBeginning, $value, $errorMessage): void
     {
         $expander = new StartsWith($stringBeginning);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

@@ -8,38 +8,38 @@ use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
+use function array_key_exists;
+use function is_array;
+use function sprintf;
+
 final class HasProperty implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'hasProperty';
-
-    private string $propertyName;
+    public const string NAME = 'hasProperty';
 
     private ?string $error = null;
 
-    public function __construct(string $propertyName)
+    public function __construct(private string $propertyName)
     {
-        $this->propertyName = $propertyName;
     }
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
 
-        if (\is_array($value)) {
-            $hasProperty = \array_key_exists($this->propertyName, $value);
+        if (is_array($value)) {
+            $hasProperty = array_key_exists($this->propertyName, $value);
 
             if (!$hasProperty) {
-                $this->error = \sprintf('"json" object "%s" does not have "%s" propety.', new StringConverter($value), new StringConverter($this->propertyName));
+                $this->error = sprintf('"json" object "%s" does not have "%s" propety.', new StringConverter($value), new StringConverter($this->propertyName));
                 $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
                 return false;
@@ -51,18 +51,18 @@ final class HasProperty implements PatternExpander
         }
 
         if (!Json::isValid($value)) {
-            $this->error = \sprintf('HasProperty expander require valid "json" string, got "%s".', new StringConverter($value));
+            $this->error = sprintf('HasProperty expander require valid "json" string, got "%s".', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
         }
 
-        $jsonArray = \json_decode(Json::reformat($value), true);
+        $jsonArray = json_decode(Json::reformat($value), true);
 
-        $hasProperty = \array_key_exists($this->propertyName, $jsonArray);
+        $hasProperty = array_key_exists($this->propertyName, $jsonArray);
 
         if (!$hasProperty) {
-            $this->error = \sprintf('"json" object "%s" does not have "%s" propety.', new StringConverter($value), new StringConverter($this->propertyName));
+            $this->error = sprintf('"json" object "%s" does not have "%s" propety.', new StringConverter($value), new StringConverter($this->propertyName));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
@@ -73,7 +73,8 @@ final class HasProperty implements PatternExpander
         return true;
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->error;
     }

@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher;
 use AppVerk\PHPMatcher\Parser;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class ArrayMatcherTest extends TestCase
@@ -16,7 +19,7 @@ class ArrayMatcherTest extends TestCase
 
     private Backtrace $backtrace;
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->backtrace = new Backtrace\InMemoryBacktrace();
         $parser = new Parser(new Lexer(), new Parser\ExpanderInitializer($this->backtrace));
@@ -34,36 +37,34 @@ class ArrayMatcherTest extends TestCase
             new Matcher\WildcardMatcher($this->backtrace),
         ];
 
-        if (\class_exists('Symfony\\Component\\ExpressionLanguage\\ExpressionLanguage')) {
+        if (class_exists('Symfony\\Component\\ExpressionLanguage\\ExpressionLanguage')) {
             $matchers[] = new Matcher\ExpressionMatcher($this->backtrace);
         }
 
         $this->matcher = new Matcher\ArrayMatcher(
             new Matcher\ChainMatcher(self::class, $this->backtrace, $matchers),
             $this->backtrace,
-            $parser
+            $parser,
         );
     }
 
-    /**
-     * @dataProvider positiveMatchData
-     */
-    public function test_positive_match_arrays($value, $pattern) : void
+    #[DataProvider('positiveMatchData')]
+    public function testPositiveMatchArrays($value, $pattern): void
     {
         $this->assertTrue($this->matcher->match($value, $pattern));
     }
 
-    public function positiveMatchData()
+    public static function positiveMatchData(): iterable
     {
         $simpleArr = [
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 'Michał',
-                    'lastName' => 'Dąbrowski',
+                    'lastName'  => 'Dąbrowski',
                 ],
             ],
             true,
@@ -76,7 +77,7 @@ class ArrayMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => '@string@',
-                    'lastName' => '@string@',
+                    'lastName'  => '@string@',
                 ],
                 Matcher\ArrayMatcher::UNBOUNDED_PATTERN,
             ],
@@ -89,7 +90,7 @@ class ArrayMatcherTest extends TestCase
         $simpleArrPatternWithUniversalKey = [
             'users' => [
                 [
-                    'firstName' => '@string@',
+                    'firstName'                         => '@string@',
                     Matcher\ArrayMatcher::UNIVERSAL_KEY => '@*@',
                 ],
                 Matcher\ArrayMatcher::UNBOUNDED_PATTERN,
@@ -103,7 +104,7 @@ class ArrayMatcherTest extends TestCase
         $simpleArrPatternWithUniversalKeyAndStringValue = [
             'users' => [
                 [
-                    'firstName' => '@string@',
+                    'firstName'                         => '@string@',
                     Matcher\ArrayMatcher::UNIVERSAL_KEY => '@string@',
                 ],
                 Matcher\ArrayMatcher::UNBOUNDED_PATTERN,
@@ -134,7 +135,7 @@ class ArrayMatcherTest extends TestCase
                     'users' => [
                         [
                             'firstName' => 'Norbert',
-                            'lastName' => 'Foobar',
+                            'lastName'  => 'Foobar',
                         ],
                     ],
                     true,
@@ -148,26 +149,24 @@ class ArrayMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider negativeMatchData
-     */
-    public function test_negative_match_arrays($value, $pattern, string $error) : void
+    #[DataProvider('negativeMatchData')]
+    public function testNegativeMatchArrays($value, $pattern, string $error): void
     {
         $this->assertFalse($this->matcher->match($value, $pattern));
         $this->assertSame($error, $this->matcher->getError());
     }
 
-    public function negativeMatchData()
+    public static function negativeMatchData(): iterable
     {
         $simpleArr = [
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 'Michał',
-                    'lastName' => 'Dąbrowski',
+                    'lastName'  => 'Dąbrowski',
                 ],
             ],
             true,
@@ -180,11 +179,11 @@ class ArrayMatcherTest extends TestCase
             'users' => [
                 [
                     'firstName' => 'Norbert',
-                    'lastName' => 'Orzechowicz',
+                    'lastName'  => 'Orzechowicz',
                 ],
                 [
                     'firstName' => 'Pablo',
-                    'lastName' => 'Dąbrowski',
+                    'lastName'  => 'Dąbrowski',
                 ],
             ],
             true,
@@ -196,7 +195,7 @@ class ArrayMatcherTest extends TestCase
         $simpleArrPatternWithUniversalKeyAndIntegerValue = [
             'users' => [
                 [
-                    'firstName' => '@string@',
+                    'firstName'                         => '@string@',
                     Matcher\ArrayMatcher::UNIVERSAL_KEY => '@integer@',
                 ],
                 Matcher\ArrayMatcher::UNBOUNDED_PATTERN,
@@ -229,7 +228,7 @@ class ArrayMatcherTest extends TestCase
                     'users' => [
                         [
                             'firstName' => 'Norbert',
-                            'lastName' => 'Foobar',
+                            'lastName'  => 'Foobar',
                         ],
                     ],
                     true,
@@ -243,7 +242,7 @@ class ArrayMatcherTest extends TestCase
         ];
     }
 
-    public function test_negative_match_when_cant_find_matcher_that_can_match_array_element() : void
+    public function testNegativeMatchWhenCantFindMatcherThatCanMatchArrayElement(): void
     {
         $matcher = new Matcher\ArrayMatcher(
             new Matcher\ChainMatcher(
@@ -251,24 +250,24 @@ class ArrayMatcherTest extends TestCase
                 $backtrace = new Backtrace\InMemoryBacktrace(),
                 [
                     new Matcher\WildcardMatcher($backtrace),
-                ]
+                ],
             ),
             $backtrace,
-            $parser = new Parser(new Lexer(), new Parser\ExpanderInitializer($backtrace))
+            $parser = new Parser(new Lexer(), new Parser\ExpanderInitializer($backtrace)),
         );
 
         $this->assertTrue($matcher->match(['test' => 1], ['test' => 1]));
         $this->assertFalse($backtrace->isEmpty());
     }
 
-    public function test_error_when_path_in_pattern_does_not_exist() : void
+    public function testErrorWhenPathInPatternDoesNotExist(): void
     {
         $this->assertFalse($this->matcher->match(['foo' => 'foo value'], ['bar' => 'bar value']));
         $this->assertEquals($this->matcher->getError(), 'There is no element under path [foo] in pattern.');
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_error_when_path_in_nested_pattern_does_not_exist() : void
+    public function testErrorWhenPathInNestedPatternDoesNotExist(): void
     {
         $array = ['foo' => ['bar' => ['baz' => 'bar value']]];
         $pattern = ['foo' => ['bar' => ['faz' => 'faz value']]];
@@ -279,7 +278,7 @@ class ArrayMatcherTest extends TestCase
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_error_when_path_in_value_does_not_exist() : void
+    public function testErrorWhenPathInValueDoesNotExist(): void
     {
         $array = ['foo' => 'foo'];
         $pattern = ['foo' => 'foo', 'bar' => 'bar'];
@@ -290,7 +289,7 @@ class ArrayMatcherTest extends TestCase
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_error_when_path_in_nested_value_does_not_exist() : void
+    public function testErrorWhenPathInNestedValueDoesNotExist(): void
     {
         $array = ['foo' => ['bar' => []]];
         $pattern = ['foo' => ['bar' => ['faz' => 'faz value']]];
@@ -301,21 +300,21 @@ class ArrayMatcherTest extends TestCase
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_error_when_matching_fail() : void
+    public function testErrorWhenMatchingFail(): void
     {
         $this->assertFalse($this->matcher->match(['foo' => 'foo value'], ['foo' => 'bar value']));
         $this->assertEquals($this->matcher->getError(), 'Value "foo value" does not match pattern "bar value" at path: "[foo]"');
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_error_message_when_matching_non_array_value() : void
+    public function testErrorMessageWhenMatchingNonArrayValue(): void
     {
-        $this->assertFalse($this->matcher->match(new \DateTime(), '@array@'));
+        $this->assertFalse($this->matcher->match(new DateTime(), '@array@'));
         $this->assertEquals($this->matcher->getError(), 'Value "\DateTime" does not match pattern "@array@" at path: "root"');
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_matching_array_to_array_pattern() : void
+    public function testMatchingArrayToArrayPattern(): void
     {
         $this->assertTrue($this->matcher->match(['foo', 'bar'], '@array@'));
         $this->assertTrue($this->matcher->match(['foo'], '@array@.inArray("foo")'));
@@ -324,23 +323,23 @@ class ArrayMatcherTest extends TestCase
             [
                 '@string@',
                 '@array@.inArray("bar")',
-            ]
+            ],
         ));
         $this->assertFalse($this->backtrace->isEmpty());
     }
 
-    public function test_array_previous_pattern() : void
+    public function testArrayPreviousPattern(): void
     {
         $this->assertTrue(
             $this->matcher->match(
                 [
-                    ['id' => 1, 'unique' => \uniqid()],
-                    ['id' => 2, 'unique' => \uniqid()],
-                    ['id' => 3, 'unique' => \uniqid()],
-                    ['id' => 4, 'unique' => \uniqid()],
-                    ['id' => '5', 'unique' => \uniqid()],
-                    ['id' => '6', 'unique' => \uniqid()],
-                    ['id' => '7', 'unique' => \uniqid()],
+                    ['id' => 1, 'unique' => uniqid()],
+                    ['id' => 2, 'unique' => uniqid()],
+                    ['id' => 3, 'unique' => uniqid()],
+                    ['id' => 4, 'unique' => uniqid()],
+                    ['id' => '5', 'unique' => uniqid()],
+                    ['id' => '6', 'unique' => uniqid()],
+                    ['id' => '7', 'unique' => uniqid()],
                 ],
                 [
                     ['id' => '@integer@', 'unique' => '@string@'],
@@ -350,24 +349,24 @@ class ArrayMatcherTest extends TestCase
                     ['id' => '@string@', 'unique' => '@string@'],
                     '@array_previous@',
                     '@array_previous@',
-                ]
+                ],
             ),
-            (string) $this->matcher->getError()
+            (string) $this->matcher->getError(),
         );
     }
 
-    public function test_array_previous_repeat_pattern() : void
+    public function testArrayPreviousRepeatPattern(): void
     {
         $this->assertTrue(
             $this->matcher->match(
                 [
-                    ['id' => 1, 'unique' => \uniqid()],
-                    ['id' => 2, 'unique' => \uniqid()],
-                    ['id' => '3', 'unique' => \uniqid()],
-                    ['id' => 4, 'unique' => \uniqid()],
-                    ['id' => 5, 'unique' => \uniqid()],
-                    ['id' => 6, 'unique' => \uniqid()],
-                    ['id' => 7, 'unique' => \uniqid()],
+                    ['id' => 1, 'unique' => uniqid()],
+                    ['id' => 2, 'unique' => uniqid()],
+                    ['id' => '3', 'unique' => uniqid()],
+                    ['id' => 4, 'unique' => uniqid()],
+                    ['id' => 5, 'unique' => uniqid()],
+                    ['id' => 6, 'unique' => uniqid()],
+                    ['id' => 7, 'unique' => uniqid()],
                 ],
                 [
                     ['id' => '@integer@', 'unique' => '@string@'],
@@ -375,35 +374,35 @@ class ArrayMatcherTest extends TestCase
                     ['id' => '@string@', 'unique' => '@string@'],
                     ['id' => '@integer@', 'unique' => '@string@'],
                     '@array_previous_repeat@',
-                ]
+                ],
             ),
-            (string) $this->matcher->getError()
+            (string) $this->matcher->getError(),
         );
     }
 
-    public function test_invalid_array_previous_repeat_pattern() : void
+    public function testInvalidArrayPreviousRepeatPattern(): void
     {
         $this->matcher->match(
             [
-                ['id' => 1, 'unique' => \uniqid()],
-                ['id' => 2, 'unique' => \uniqid()],
-                ['id' => '3', 'unique' => \uniqid()],
-                ['id' => 4, 'unique' => \uniqid()],
-                ['id' => 5, 'unique' => \uniqid()],
-                ['id' => 6, 'unique' => \uniqid()],
-                ['id' => 7, 'unique' => \uniqid()],
+                ['id' => 1, 'unique' => uniqid()],
+                ['id' => 2, 'unique' => uniqid()],
+                ['id' => '3', 'unique' => uniqid()],
+                ['id' => 4, 'unique' => uniqid()],
+                ['id' => 5, 'unique' => uniqid()],
+                ['id' => 6, 'unique' => uniqid()],
+                ['id' => 7, 'unique' => uniqid()],
             ],
             [
                 ['id' => '@integer@', 'unique' => '@string@'],
                 '@array_previous@',
                 ['id' => '@string@', 'unique' => '@string@'],
                 '@array_previous_repeat@',
-            ]
+            ],
         );
 
         $this->assertSame(
             'Value "4" does not match pattern "@string@" at path: "[3][id]"',
-            $this->matcher->getError()
+            $this->matcher->getError(),
         );
     }
 }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher;
@@ -41,15 +43,13 @@ class JsonMatcherTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider positivePatterns
-     */
+    #[DataProvider('positivePatterns')]
     public function test_positive_can_match($pattern) : void
     {
         $this->assertTrue($this->matcher->canMatch($pattern));
     }
 
-    public function positivePatterns()
+    public static function positivePatterns()
     {
         return [
             [\json_encode(['Norbert', 'Michał'])],
@@ -58,15 +58,13 @@ class JsonMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider negativePatterns
-     */
+    #[DataProvider('negativePatterns')]
     public function test_negative_can_match($pattern) : void
     {
         $this->assertFalse($this->matcher->canMatch($pattern));
     }
 
-    public function negativePatterns()
+    public static function negativePatterns()
     {
         return [
             ['@string@'],
@@ -75,15 +73,13 @@ class JsonMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider positiveMatches
-     */
+    #[DataProvider('positiveMatches')]
     public function test_positive_matches($value, $pattern) : void
     {
         $this->assertTrue($this->matcher->match($value, $pattern), (string) $this->matcher->getError());
     }
 
-    public function positiveMatches()
+    public static function positiveMatches()
     {
         return [
             [
@@ -166,15 +162,13 @@ class JsonMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider normalizationRequiredDataProvider
-     */
+    #[DataProvider('normalizationRequiredDataProvider')]
     public function test_positive_matches_after_normalization($value, $pattern) : void
     {
         $this->assertTrue($this->matcher->match($value, $pattern), (string) $this->matcher->getError());
     }
 
-    public function normalizationRequiredDataProvider()
+    public static function normalizationRequiredDataProvider()
     {
         return [
             [
@@ -204,16 +198,14 @@ class JsonMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider negativeMatches
-     */
+    #[DataProvider('negativeMatches')]
     public function test_negative_matches($value, $pattern, string $error) : void
     {
         $this->assertFalse($this->matcher->match($value, $pattern), (string) $this->matcher->getError());
         $this->assertSame($error, $this->matcher->getError());
     }
 
-    public function negativeMatches()
+    public static function negativeMatches()
     {
         return [
             [
@@ -303,9 +295,8 @@ class JsonMatcherTest extends TestCase
         $this->assertEquals('Invalid given JSON of pattern. Syntax error, malformed JSON', $this->matcher->getError());
     }
 
-    /**
-     * Solves https://github.com/coduo/php-matcher/issues/156.
-     */
+    
+
     public function test_empty_error_after_successful_match() : void
     {
         $this->assertTrue($this->matcher->match($value = '{"foo": "bar"}', $pattern = '{"foo": "@string@"}'));

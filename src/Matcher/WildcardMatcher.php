@@ -6,30 +6,28 @@ namespace AppVerk\PHPMatcher\Matcher;
 
 use AppVerk\PHPMatcher\Backtrace;
 
+use function is_string;
+
 final class WildcardMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const MATCH_PATTERN = "/^@(\*|wildcard)@$/";
+    public const string MATCH_PATTERN = "/^@(\*|wildcard)@$/";
 
-    private Backtrace $backtrace;
-
-    public function __construct(Backtrace $backtrace)
+    public function __construct(private readonly Backtrace $backtrace)
     {
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherSucceed(self::class, $value, $pattern);
 
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        $result = \is_string($pattern) && 0 !== \preg_match(self::MATCH_PATTERN, $pattern);
+        $result = is_string($pattern) && 0 !== preg_match(self::MATCH_PATTERN, $pattern);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);
 
         return $result;

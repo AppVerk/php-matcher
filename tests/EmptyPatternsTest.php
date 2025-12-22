@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\PHPMatcher;
 use PHPUnit\Framework\TestCase;
 
@@ -27,15 +29,13 @@ final class EmptyPatternsTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->matcher = new PHPMatcher();
     }
 
-    /**
-     * @dataProvider emptyPatternString
-     */
-    public function test_empty_pattern_in_the_json($value, $pattern, $expectedResult) : void
+    #[DataProvider('emptyPatternString')]
+    public function testEmptyPatternInTheJson($value, $pattern, $expectedResult): void
     {
         $match = $this->matcher->match($value, $pattern);
         $this->assertSame($expectedResult, $match);

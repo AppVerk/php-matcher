@@ -8,23 +8,26 @@ abstract class Matcher implements ValueMatcher
 {
     protected ?string $error = null;
 
-    /**
-     * @inheritdoc
-     */
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         return $value === $pattern;
     }
 
-    public function clearError() : void
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
+    {
+        return false;
+    }
+
+    #[\Override]
+    public function clearError(): void
     {
         $this->error = null;
     }

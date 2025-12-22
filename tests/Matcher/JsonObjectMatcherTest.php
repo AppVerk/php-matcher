@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher\JsonObjectMatcher;
@@ -56,26 +58,22 @@ final class JsonObjectMatcherTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->matcher = new JsonObjectMatcher(
             $backtrace = new Backtrace\InMemoryBacktrace(),
-            new Parser(new Lexer(), new Parser\ExpanderInitializer($backtrace))
+            new Parser(new Lexer(), new Parser\ExpanderInitializer($backtrace)),
         );
     }
 
-    /**
-     * @dataProvider positiveMatches
-     */
-    public function test_matching_valid_json_string($jsonString, $pattern) : void
+    #[DataProvider('positiveMatches')]
+    public function testMatchingValidJsonString($jsonString, $pattern): void
     {
         $this->assertTrue($this->matcher->match($jsonString, $pattern), (string) $this->matcher->getError());
     }
 
-    /**
-     * @dataProvider negativeMatches
-     */
-    public function test_matching_invalid_json_string($jsonString, string $pattern, string $expectedError) : void
+    #[DataProvider('negativeMatches')]
+    public function testMatchingInvalidJsonString($jsonString, string $pattern, string $expectedError): void
     {
         $this->assertFalse($this->matcher->match($jsonString, $pattern), (string) $this->matcher->getError());
         $this->assertSame($expectedError, $this->matcher->getError());

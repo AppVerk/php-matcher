@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsIp;
 use PHPUnit\Framework\TestCase;
@@ -22,10 +24,8 @@ class IsIpTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesIpProvider
-     */
-    public function test_ip($ip, $expected) : void
+    #[DataProvider('examplesIpProvider')]
+    public function testIp($ip, $expected): void
     {
         $expander = new IsIp();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

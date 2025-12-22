@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsEmpty;
 use PHPUnit\Framework\TestCase;
@@ -21,10 +23,8 @@ class IsEmptyTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_is_empty_expander_match($value, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testIsEmptyExpanderMatch($value, $expectedResult): void
     {
         $expander = new IsEmpty();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

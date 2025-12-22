@@ -8,24 +8,25 @@ use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Value\SingleLineString;
 use Coduo\ToString\StringConverter;
 
+use function is_scalar;
+use function sprintf;
+
 final class ScalarMatcher extends Matcher
 {
-    private Backtrace $backtrace;
-
-    public function __construct(Backtrace $backtrace)
+    public function __construct(private readonly Backtrace $backtrace)
     {
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
         if ($value !== $pattern) {
-            $this->error = \sprintf(
+            $this->error = sprintf(
                 '"%s" does not match "%s".',
                 new SingleLineString((string) new StringConverter($value)),
-                new SingleLineString((string) new StringConverter($pattern))
+                new SingleLineString((string) new StringConverter($pattern)),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
@@ -37,9 +38,10 @@ final class ScalarMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        $result = \is_scalar($pattern);
+        $result = is_scalar($pattern);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);
 
         return $result;

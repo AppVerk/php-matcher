@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\PHPMatcher;
 use PHPUnit\Framework\TestCase;
 
@@ -73,9 +75,7 @@ final class ExpandersTest extends TestCase
         $this->matcher = new PHPMatcher();
     }
 
-    /**
-     * @dataProvider expanderExamples()
-     */
+    #[DataProvider('expanderExamples')]
     public function test_expanders($value, $pattern, $expectedResult) : void
     {
         $this->assertSame($expectedResult, $this->matcher->match($value, $pattern), (string) $this->matcher->error());

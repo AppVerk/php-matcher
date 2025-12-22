@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Repeat;
 use PHPUnit\Framework\TestCase;
@@ -62,20 +64,16 @@ class RepeatTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_matching_values($needle, $haystack, $expectedResult, $isStrict = true) : void
+    #[DataProvider('examplesProvider')]
+    public function testMatchingValues($needle, $haystack, $expectedResult, $isStrict = true): void
     {
         $expander = new Repeat($needle, $isStrict);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($haystack));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($boundary, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($boundary, $value, $errorMessage): void
     {
         $expander = new Repeat($boundary);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

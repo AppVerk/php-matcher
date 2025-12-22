@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\After;
 use PHPUnit\Framework\TestCase;
@@ -28,20 +30,16 @@ class AfterTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_examples($boundary, $value, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testExamples($boundary, $value, $expectedResult): void
     {
         $expander = new After($boundary);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($value));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($boundary, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($boundary, $value, $errorMessage): void
     {
         $expander = new After($boundary);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

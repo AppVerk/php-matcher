@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\InArray;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class InArrayTest extends TestCase
@@ -23,24 +26,20 @@ class InArrayTest extends TestCase
     {
         return [
             ['ipsum', ['ipsum lorem'], "Array(1) doesn't have \"ipsum\" element."],
-            ['lorem', new \DateTime(), 'InArray expander require "array", got "\\DateTime".'],
+            ['lorem', new DateTime(), 'InArray expander require "array", got "\\DateTime".'],
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_matching_values($needle, $haystack, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testMatchingValues($needle, $haystack, $expectedResult): void
     {
         $expander = new InArray($needle);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($haystack));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($boundary, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($boundary, $value, $errorMessage): void
     {
         $expander = new InArray($boundary);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

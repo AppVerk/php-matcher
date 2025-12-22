@@ -4,40 +4,34 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\AST;
 
+use function count;
+
 final class Expander implements Node
 {
-    private string $name;
-
-    /**
-     * @var mixed[]
-     */
+    
     private array $arguments = [];
 
-    public function __construct(string $name)
+    public function __construct(private readonly string $name)
     {
-        $this->name = $name;
-        $this->arguments = [];
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function addArgument($argument) : void
+    public function addArgument($argument): void
     {
         $this->arguments[] = $argument;
     }
 
-    public function hasArguments() : bool
+    public function hasArguments(): bool
     {
-        return (bool) \count($this->arguments);
+        return (bool) count($this->arguments);
     }
 
-    /**
-     * @return mixed[]
-     */
-    public function getArguments() : array
+    
+    public function getArguments(): array
     {
         return $this->arguments;
     }

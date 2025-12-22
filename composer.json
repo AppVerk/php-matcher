@@ -16,6 +16,10 @@
         {
             "name": "Rafał Narowski",
             "email": "rafal.narowski@appverk.com"
+        },
+        {
+            "name": "Michał Jędraszczyk",
+            "email": "michal.jedraszczyk@appverk.com"
         }
     ],
     "require": {
@@ -25,7 +29,7 @@
         "ext-simplexml": "*",
         "aeon-php/calendar": "^0.14.0 || ^0.15.0 || ^0.16.0 || ^0.17.0 || ^0.18.0 || ^1.0",
         "coduo/php-to-string": "^3",
-        "doctrine/lexer": "2.1.1",
+        "doctrine/lexer": "3.0",
         "phpunit/phpunit": "^11.0.0"
     },
     "require-dev": {

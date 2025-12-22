@@ -10,7 +10,7 @@ trait BacktraceBehavior
 {
     protected Backtrace $backtrace;
 
-    public function setBacktrace(Backtrace $backtrace) : void
+    public function setBacktrace(Backtrace $backtrace): void
     {
         $this->backtrace = $backtrace;
     }

@@ -12,45 +12,35 @@ use AppVerk\PHPMatcher\Matcher\ArrayMatcher\StringDifference;
 use AppVerk\PHPMatcher\Matcher\ArrayMatcher\ValuePatternDifference;
 use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
+use Throwable;
+
+use function array_key_exists;
+use function count;
+use function in_array;
+use function is_array;
+use function is_string;
+use function sprintf;
+
+use const ARRAY_FILTER_USE_BOTH;
 
 final class ArrayMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const PATTERN = 'array';
+    public const string PATTERN = 'array';
 
-    /**
-     * @var string
-     */
-    public const UNBOUNDED_PATTERN = '@...@';
+    public const string UNBOUNDED_PATTERN = '@...@';
 
-    /**
-     * @var string
-     */
-    public const UNIVERSAL_KEY = '@*@';
+    public const string UNIVERSAL_KEY = '@*@';
 
-    public const ARRAY_PREVIOUS_PATTERN = '@array_previous@';
+    public const string ARRAY_PREVIOUS_PATTERN = '@array_previous@';
 
-    public const ARRAY_PREVIOUS_PATTERN_REPEAT = '@array_previous_repeat@';
+    public const string ARRAY_PREVIOUS_PATTERN_REPEAT = '@array_previous_repeat@';
 
-    private ValueMatcher $propertyMatcher;
-
-    private Parser $parser;
-
-    private Backtrace $backtrace;
-
-    private Diff $diff;
-
-    public function __construct(ValueMatcher $propertyMatcher, Backtrace $backtrace, Parser $parser)
+    public function __construct(private readonly ValueMatcher $propertyMatcher, private readonly Backtrace $backtrace, private readonly Parser $parser, private Diff $diff = new Diff())
     {
-        $this->diff = new Diff();
-        $this->propertyMatcher = $propertyMatcher;
-        $this->parser = $parser;
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
@@ -60,7 +50,7 @@ final class ArrayMatcher extends Matcher
             return true;
         }
 
-        if (!\is_array($value)) {
+        if (!is_array($value)) {
             $this->addValuePatternDifference($value, $pattern);
 
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->getError());
@@ -83,44 +73,47 @@ final class ArrayMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        return \is_array($pattern) || $this->isArrayPattern($pattern);
+        return is_array($pattern) || $this->isArrayPattern($pattern);
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
-        if (!$this->diff->count()) {
+        if ($this->diff->count() === 0) {
             return null;
         }
 
-        return \implode("\n", \array_map(fn (Difference $difference) : string => $difference->format(), $this->diff->all()));
+        return implode("\n", array_map(static fn(Difference $difference): string => $difference->format(), $this->diff->all()));
     }
 
-    public function clearError() : void
+    #[\Override]
+    public function clearError(): void
     {
         $this->diff = new Diff();
     }
 
-    private function isArrayPattern($pattern) : bool
+    private function isArrayPattern($pattern): bool
     {
-        if (!\is_string($pattern)) {
+        if (!is_string($pattern)) {
             return false;
         }
 
         return $this->parser->hasValidSyntax($pattern) && $this->parser->parse($pattern)->is(self::PATTERN);
     }
 
-    private function iterateMatch(array $values, array $patterns, string $parentPath = '') : bool
+    private function iterateMatch(array $values, array $patterns, string $parentPath = ''): bool
     {
         $pattern = null;
         $previousPattern = null;
 
-        /** @psalm-suppress InvalidArrayOffset */
-        if (\in_array(self::ARRAY_PREVIOUS_PATTERN_REPEAT, $patterns, true)) {
-            $patterns = \array_merge(
-                \array_replace($patterns, [\array_search(self::ARRAY_PREVIOUS_PATTERN_REPEAT, $patterns, true) => self::ARRAY_PREVIOUS_PATTERN]),
-                \array_fill(0, \count($values) - \count($patterns), self::ARRAY_PREVIOUS_PATTERN)
+        
+        if (in_array(self::ARRAY_PREVIOUS_PATTERN_REPEAT, $patterns, true)) {
+            $patterns = array_merge(
+                array_replace($patterns, [array_search(self::ARRAY_PREVIOUS_PATTERN_REPEAT, $patterns, true) => self::ARRAY_PREVIOUS_PATTERN]),
+                array_fill(0, count($values) - count($patterns), self::ARRAY_PREVIOUS_PATTERN),
             );
         }
 
@@ -153,7 +146,7 @@ final class ArrayMatcher extends Matcher
                 continue;
             }
 
-            if (!\is_array($value)) {
+            if (!is_array($value)) {
                 return false;
             }
 
@@ -183,19 +176,19 @@ final class ArrayMatcher extends Matcher
         return $this->isPatternValid($patterns, $values, $parentPath);
     }
 
-    private function isPatternValid(array $pattern, array $values, string $parentPath) : bool
+    private function isPatternValid(array $pattern, array $values, string $parentPath): bool
     {
         $skipPattern = self::UNBOUNDED_PATTERN;
 
-        $pattern = \array_filter(
+        $pattern = array_filter(
             $pattern,
-            fn ($item) => $item !== $skipPattern
+            static fn($item): bool => $item !== $skipPattern,
         );
 
         $notExistingKeys = $this->findNotExistingKeys($pattern, $values);
 
-        if (\count($notExistingKeys) > 0) {
-            $keyNames = \array_keys($notExistingKeys);
+        if ($notExistingKeys !== []) {
+            $keyNames = array_keys($notExistingKeys);
             $path = $this->formatFullPath($parentPath, $this->formatAccessPath($keyNames[0]));
             $this->setMissingElementInError('value', $path);
 
@@ -205,25 +198,23 @@ final class ArrayMatcher extends Matcher
         return true;
     }
 
-    /**
-     * @return mixed[]
-     */
-    private function findNotExistingKeys(array $patterns, array $values) : array
+    
+    private function findNotExistingKeys(array $patterns, array $values): array
     {
-        $notExistingKeys = \array_diff_key($patterns, $values);
+        $notExistingKeys = array_diff_key($patterns, $values);
 
-        return \array_filter($notExistingKeys, function ($pattern, $key) use ($values) : bool {
+        return array_filter($notExistingKeys, function($pattern, $key) use ($values): bool {
             if ($key === self::UNIVERSAL_KEY) {
                 return false;
             }
 
-            if (\is_array($pattern)) {
-                return empty($pattern) || !$this->match($values, $pattern);
+            if (is_array($pattern)) {
+                return $pattern === [] || !$this->match($values, $pattern);
             }
 
             try {
                 $typePattern = $this->parser->parse($pattern);
-            } catch (Exception | \Throwable $e) {
+            } catch (Exception|Throwable) {
                 return true;
             }
 
@@ -231,29 +222,27 @@ final class ArrayMatcher extends Matcher
         }, ARRAY_FILTER_USE_BOTH);
     }
 
-    private function valueMatchPattern($value, $pattern, $parentPath) : bool
+    private function valueMatchPattern($value, $pattern, string $parentPath): bool
     {
-        $match = $this->propertyMatcher->canMatch($pattern) &&
-            $this->propertyMatcher->match($value, $pattern);
+        $match = $this->propertyMatcher->canMatch($pattern)
+            && $this->propertyMatcher->match($value, $pattern);
 
-        if (!$match) {
-            if (!\is_array($value)) {
-                $this->addValuePatternDifference($value, $pattern, $parentPath);
-            }
+        if (!$match && !is_array($value)) {
+            $this->addValuePatternDifference($value, $pattern, $parentPath);
         }
 
         return $match;
     }
 
-    private function valueExist(string $path, array $haystack) : bool
+    private function valueExist(string $path, array $haystack): bool
     {
         return $this->arrayPropertyExists($this->getKeyFromAccessPath($path), $haystack);
     }
 
-    private function arrayPropertyExists(string $property, array $objectOrArray) : bool
+    private function arrayPropertyExists(string $property, array $objectOrArray): bool
     {
-        return isset($objectOrArray[$property]) ||
-            \array_key_exists($property, $objectOrArray);
+        return isset($objectOrArray[$property])
+            || array_key_exists($property, $objectOrArray);
     }
 
     private function getValueByPath(array $array, string $path)
@@ -261,32 +250,32 @@ final class ArrayMatcher extends Matcher
         return $array[$this->getKeyFromAccessPath($path)];
     }
 
-    private function setMissingElementInError(string $place, string $path) : void
+    private function setMissingElementInError(string $place, string $path): void
     {
-        $this->diff = $this->diff->add(new StringDifference(\sprintf('There is no element under path %s in %s.', $path, $place)));
+        $this->diff = $this->diff->add(new StringDifference(sprintf('There is no element under path %s in %s.', $path, $place)));
     }
 
-    private function formatAccessPath($key) : string
+    private function formatAccessPath(int|string $key): string
     {
-        return \sprintf('[%s]', $key);
+        return sprintf('[%s]', $key);
     }
 
-    private function getKeyFromAccessPath(string $path) : string
+    private function getKeyFromAccessPath(string $path): string
     {
-        return \substr($path, 1, -1);
+        return substr($path, 1, -1);
     }
 
-    private function formatFullPath(string $parentPath, string $path) : string
+    private function formatFullPath(string $parentPath, string $path): string
     {
-        return \sprintf('%s%s', $parentPath, $path);
+        return sprintf('%s%s', $parentPath, $path);
     }
 
-    private function shouldSkipValueMatchingFor($lastPattern) : bool
+    private function shouldSkipValueMatchingFor($lastPattern): bool
     {
         return $lastPattern === self::UNBOUNDED_PATTERN;
     }
 
-    private function allExpandersMatch($value, $pattern, $parentPath = '') : bool
+    private function allExpandersMatch(array $value, $pattern, string $parentPath = ''): bool
     {
         $typePattern = $this->parser->parse($pattern);
 
@@ -303,12 +292,12 @@ final class ArrayMatcher extends Matcher
         return true;
     }
 
-    private function addValuePatternDifference($value, $pattern, string $path = '') : void
+    private function addValuePatternDifference($value, $pattern, string $path = ''): void
     {
         $this->diff = $this->diff->add(new ValuePatternDifference(
             (string) new StringConverter($value),
             (string) new StringConverter($pattern),
-            $path ? $path : 'root'
+            $path ?: 'root',
         ));
     }
 }

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Matcher\ArrayMatcher;
 
-final class Diff
+use function count;
+
+final readonly class Diff
 {
-    /**
-     * @var Difference[]
-     */
+    
     private array $differences;
 
     public function __construct(Difference ...$difference)
@@ -16,21 +16,19 @@ final class Diff
         $this->differences = $difference;
     }
 
-    public function add(Difference $difference) : self
+    public function add(Difference $difference): self
     {
-        return new self(...\array_merge($this->differences, [$difference]));
+        return new self(...array_merge($this->differences, [$difference]));
     }
 
-    /**
-     *  @return Difference[]
-     */
-    public function all() : array
+    
+    public function all(): array
     {
         return $this->differences;
     }
 
-    public function count() : int
+    public function count(): int
     {
-        return \count($this->differences);
+        return count($this->differences);
     }
 }

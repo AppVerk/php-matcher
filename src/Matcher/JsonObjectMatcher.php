@@ -9,34 +9,31 @@ use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 
+use function gettype;
+use function is_array;
+use function is_string;
+use function sprintf;
+
 final class JsonObjectMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const JSON_PATTERN = 'json';
+    public const string JSON_PATTERN = 'json';
 
-    private Backtrace $backtrace;
-
-    private Parser $parser;
-
-    public function __construct(Backtrace $backtrace, Parser $parser)
+    public function __construct(private readonly Backtrace $backtrace, private readonly Parser $parser)
     {
-        $this->backtrace = $backtrace;
-        $this->parser = $parser;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         if (!$this->isJsonPattern($pattern)) {
-            $this->error = \sprintf('%s "%s" is not a valid json.', \gettype($value), new StringConverter($value));
+            $this->error = sprintf('%s "%s" is not a valid json.', gettype($value), new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
-        if (!Json::isValid($value) && null !== $value && !\is_array($value)) {
-            $this->error = \sprintf('Invalid given JSON of value. %s', Json::getErrorMessage());
+        if (!Json::isValid($value) && null !== $value && !is_array($value)) {
+            $this->error = sprintf('Invalid given JSON of value. %s', Json::getErrorMessage());
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -45,24 +42,25 @@ final class JsonObjectMatcher extends Matcher
         return $this->allExpandersMatch($value, $pattern);
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        $result = \is_string($pattern) && $this->isJsonPattern($pattern);
+        $result = is_string($pattern) && $this->isJsonPattern($pattern);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);
 
         return $result;
     }
 
-    private function isJsonPattern($pattern) : bool
+    private function isJsonPattern($pattern): bool
     {
-        if (!\is_string($pattern)) {
+        if (!is_string($pattern)) {
             return false;
         }
 
         return $this->parser->hasValidSyntax($pattern) && $this->parser->parse($pattern)->is(self::JSON_PATTERN);
     }
 
-    private function allExpandersMatch($value, $pattern) : bool
+    private function allExpandersMatch($value, $pattern): bool
     {
         $typePattern = $this->parser->parse($pattern);
 

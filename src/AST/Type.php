@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\AST;
 
-final class Type implements Node
+final readonly class Type implements Node, \Stringable
 {
-    private string $type;
-
-    public function __construct(string $type)
+    public function __construct(private string $type)
     {
-        $this->type = $type;
     }
 
-    public function __toString() : string
+    #[\Override]
+    public function __toString(): string
     {
         return $this->type;
     }

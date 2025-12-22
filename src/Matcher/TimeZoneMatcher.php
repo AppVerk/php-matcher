@@ -8,45 +8,39 @@ use Aeon\Calendar\Gregorian\TimeZone;
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
+use Exception;
+
+use function gettype;
+use function is_string;
+use function sprintf;
 
 final class TimeZoneMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const PATTERN = 'timezone';
+    public const string PATTERN = 'timezone';
 
-    /**
-     * @var string
-     */
-    public const PATTERN_SHORT = 'tz';
+    public const string PATTERN_SHORT = 'tz';
 
-    private Backtrace $backtrace;
-
-    private Parser $parser;
-
-    public function __construct(Backtrace $backtrace, Parser $parser)
+    public function __construct(private readonly Backtrace $backtrace, private readonly Parser $parser)
     {
-        $this->backtrace = $backtrace;
-        $this->parser = $parser;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
-        if (!\is_string($value)) {
-            $this->error = \sprintf('%s "%s" is not a valid string.', \gettype($value), new StringConverter($value));
+        if (!is_string($value)) {
+            $this->error = sprintf('%s "%s" is not a valid string.', gettype($value), new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
         try {
-            /** @phpstan-ignore-next-line  */
+            
             TimeZone::fromString($value);
-        } catch (\Exception $exception) {
-            $this->error = \sprintf('%s "%s" is not a valid timezone.', $value, new StringConverter($value));
+        } catch (Exception) {
+            $this->error = sprintf('%s "%s" is not a valid timezone.', $value, new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -66,9 +60,10 @@ final class TimeZoneMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        if (!\is_string($pattern)) {
+        if (!is_string($pattern)) {
             $this->backtrace->matcherCanMatch(self::class, $pattern, false);
 
             return false;

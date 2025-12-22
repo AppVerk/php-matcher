@@ -14,17 +14,13 @@ class ChainMatcherTest extends TestCase
 {
     private ?ChainMatcher $matcher = null;
 
-    /**
-     * @var MockObject
-     */
+    
     private $firstMatcher;
 
-    /**
-     * @var MockObject
-     */
+    
     private $secondMatcher;
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->firstMatcher = $this->createMock(ValueMatcher::class);
         $this->secondMatcher = $this->createMock(ValueMatcher::class);
@@ -35,60 +31,60 @@ class ChainMatcherTest extends TestCase
             [
                 $this->firstMatcher,
                 $this->secondMatcher,
-            ]
+            ],
         );
     }
 
-    public function test_only_one_matcher_can_match_but_none_matchers_match() : void
+    public function testOnlyOneMatcherCanMatchButNoneMatchersMatch(): void
     {
-        $this->firstMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(false));
+        $this->firstMatcher->expects($this->once())->method('canMatch')->willReturn(false);
         $this->firstMatcher->expects($this->never())->method('match');
-        $this->secondMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(true));
-        $this->secondMatcher->expects($this->once())->method('match')->will($this->returnValue(false));
+        $this->secondMatcher->expects($this->once())->method('canMatch')->willReturn(true);
+        $this->secondMatcher->expects($this->once())->method('match')->willReturn(false);
 
         $this->assertEquals($this->matcher->match('foo', 'foo_pattern'), false);
     }
 
-    public function test_none_matchers_can_match() : void
+    public function testNoneMatchersCanMatch(): void
     {
-        $this->firstMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(false));
+        $this->firstMatcher->expects($this->once())->method('canMatch')->willReturn(false);
         $this->firstMatcher->expects($this->never())->method('match');
-        $this->secondMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(false));
+        $this->secondMatcher->expects($this->once())->method('canMatch')->willReturn(false);
         $this->secondMatcher->expects($this->never())->method('match');
 
         $this->assertEquals($this->matcher->match('foo', 'foo_pattern'), false);
     }
 
-    public function test_first_matcher_match() : void
+    public function testFirstMatcherMatch(): void
     {
-        $this->firstMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(true));
-        $this->firstMatcher->expects($this->once())->method('match')->will($this->returnValue(true));
+        $this->firstMatcher->expects($this->once())->method('canMatch')->willReturn(true);
+        $this->firstMatcher->expects($this->once())->method('match')->willReturn(true);
         $this->secondMatcher->expects($this->never())->method('canMatch');
         $this->secondMatcher->expects($this->never())->method('match');
 
         $this->assertEquals($this->matcher->match('foo', 'foo_pattern'), true);
     }
 
-    public function test_if_there_is_error_description_only_from_last_matcher_that_fails() : void
+    public function testIfThereIsErrorDescriptionOnlyFromLastMatcherThatFails(): void
     {
-        $this->firstMatcher->expects($this->any())->method('canMatch')->will($this->returnValue(true));
-        $this->firstMatcher->expects($this->any())->method('match')->will($this->returnValue(false));
+        $this->firstMatcher->expects($this->any())->method('canMatch')->willReturn(true);
+        $this->firstMatcher->expects($this->any())->method('match')->willReturn(false);
         $this->firstMatcher->expects($this->any())->method('getError')
-            ->will($this->returnValue('First matcher error'));
+            ->willReturn('First matcher error');
 
-        $this->secondMatcher->expects($this->any())->method('canMatch')->will($this->returnValue(true));
-        $this->secondMatcher->expects($this->any())->method('match')->will($this->returnValue(false));
+        $this->secondMatcher->expects($this->any())->method('canMatch')->willReturn(true);
+        $this->secondMatcher->expects($this->any())->method('match')->willReturn(false);
         $this->secondMatcher->expects($this->any())->method('getError')
-            ->will($this->returnValue('Second matcher error'));
+            ->willReturn('Second matcher error');
 
         $this->assertEquals($this->matcher->match('foo', 'foo_pattern'), false);
         $this->assertEquals($this->matcher->getError(), 'Second matcher error');
     }
 
-    public function test_error_description_when_any_matcher_can_match() : void
+    public function testErrorDescriptionWhenAnyMatcherCanMatch(): void
     {
-        $this->firstMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(false));
-        $this->secondMatcher->expects($this->once())->method('canMatch')->will($this->returnValue(false));
+        $this->firstMatcher->expects($this->once())->method('canMatch')->willReturn(false);
+        $this->secondMatcher->expects($this->once())->method('canMatch')->willReturn(false);
 
         $this->assertEquals($this->matcher->match('foo', 'foo_pattern'), false);
         $this->assertEquals($this->matcher->getError(), 'Any matcher from chain can\'t match value "foo" to pattern "foo_pattern"');

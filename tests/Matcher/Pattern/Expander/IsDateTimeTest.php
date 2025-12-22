@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\IsDateTime;
 use PHPUnit\Framework\TestCase;
@@ -20,10 +22,8 @@ class IsDateTimeTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesDatesProvider
-     */
-    public function test_dates($date, $expectedResult) : void
+    #[DataProvider('examplesDatesProvider')]
+    public function testDates($date, $expectedResult): void
     {
         $expander = new IsDateTime();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

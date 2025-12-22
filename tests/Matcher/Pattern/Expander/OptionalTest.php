@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Optional;
 use PHPUnit\Framework\TestCase;
@@ -24,10 +26,8 @@ class OptionalTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_optional_expander_match($value, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testOptionalExpanderMatch($value, $expectedResult): void
     {
         $expander = new Optional();
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

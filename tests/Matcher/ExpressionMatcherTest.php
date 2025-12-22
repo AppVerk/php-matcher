@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\ExpressionMatcher;
+use DateTime;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class ExpressionMatcherTest extends TestCase
 {
@@ -24,7 +28,7 @@ class ExpressionMatcherTest extends TestCase
             ['@integer'],
             ['expr('],
             ['@string'],
-            [new \stdClass],
+            [new stdClass()],
             [['foobar']],
         ];
     }
@@ -34,7 +38,7 @@ class ExpressionMatcherTest extends TestCase
         return [
             [4, 'expr(value > 2)'],
             ['foo', "expr(value == 'foo')"],
-            [new \DateTime('2014-04-01'), "expr(value.format('Y-m-d') == '2014-04-01')"],
+            [new DateTime('2014-04-01'), "expr(value.format('Y-m-d') == '2014-04-01')"],
         ];
     }
 
@@ -51,7 +55,7 @@ class ExpressionMatcherTest extends TestCase
         return [
             [4, 'expr(value < 2)', '"expr(value < 2)" expression fails for value "4".'],
             [
-                new \DateTime('2014-04-01'),
+                new DateTime('2014-04-01'),
                 "expr(value.format('Y-m-d') == '2014-04-02')",
                 "\"expr(value.format('Y-m-d') == '2014-04-02')\" expression fails for value \"\\DateTime\".",
             ],
@@ -74,65 +78,51 @@ class ExpressionMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider positiveCanMatchData
-     */
-    public function test_positive_can_matches($pattern) : void
+    #[DataProvider('positiveCanMatchData')]
+    public function testPositiveCanMatches($pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider negativeCanMatchData
-     */
-    public function test_negative_can_matches($pattern) : void
+    #[DataProvider('negativeCanMatchData')]
+    public function testNegativeCanMatches($pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider positiveMatchData
-     */
-    public function test_positive_match($value, $pattern) : void
+    #[DataProvider('positiveMatchData')]
+    public function testPositiveMatch($value, $pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->match($value, $pattern));
     }
 
-    /**
-     * @dataProvider negativeMatchData
-     */
-    public function test_negative_match($value, $pattern) : void
+    #[DataProvider('negativeMatchData')]
+    public function testNegativeMatch($value, $pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->match($value, $pattern));
     }
 
-    /**
-     * @dataProvider negativeMatchDescription
-     */
-    public function test_negative_match_description($value, $pattern, $error) : void
+    #[DataProvider('negativeMatchDescription')]
+    public function testNegativeMatchDescription($value, $pattern, $error): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $matcher->match($value, $pattern);
         $this->assertEquals($error, $matcher->getError());
     }
 
-    /**
-     * @dataProvider positiveRegexMatchData
-     */
-    public function test_positive_regex_matches($value, $pattern) : void
+    #[DataProvider('positiveRegexMatchData')]
+    public function testPositiveRegexMatches($value, $pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->match($value, $pattern));
     }
 
-    /**
-     * @dataProvider negativeRegexMatchData
-     */
-    public function test_negative_regex_matches($value, $pattern) : void
+    #[DataProvider('negativeRegexMatchData')]
+    public function testNegativeRegexMatches($value, $pattern): void
     {
         $matcher = new ExpressionMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->match($value, $pattern));

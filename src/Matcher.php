@@ -6,19 +6,15 @@ namespace AppVerk\PHPMatcher;
 
 use AppVerk\PHPMatcher\Matcher\ValueMatcher;
 
-final class Matcher
+final readonly class Matcher
 {
-    private ValueMatcher $valueMatcher;
-
-    private Backtrace $backtrace;
-
-    public function __construct(ValueMatcher $valueMatcher, Backtrace $backtrace)
-    {
-        $this->valueMatcher = $valueMatcher;
-        $this->backtrace = $backtrace;
+    public function __construct(
+        private ValueMatcher $valueMatcher,
+        private Backtrace $backtrace
+    ) {
     }
 
-    public function match($value, $pattern) : bool
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
@@ -34,15 +30,12 @@ final class Matcher
         return $result;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getError() : ?string
+    public function getError(): ?string
     {
         return $this->valueMatcher->getError();
     }
 
-    public function backtrace() : Backtrace
+    public function backtrace(): Backtrace
     {
         return $this->backtrace;
     }

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\Count;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class CountTest extends TestCase
@@ -22,24 +25,20 @@ class CountTest extends TestCase
     {
         return [
             [2, [1, 2, 3], 'Expected count of Array(3) is 2.'],
-            [2, new \DateTime(), 'Count expander require "array", got "\\DateTime".'],
+            [2, new DateTime(), 'Count expander require "array", got "\\DateTime".'],
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_matching_values($needle, $haystack, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testMatchingValues($needle, $haystack, $expectedResult): void
     {
         $expander = new Count($needle);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($haystack));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($boundary, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($boundary, $value, $errorMessage): void
     {
         $expander = new Count($boundary);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

@@ -7,19 +7,16 @@ namespace AppVerk\PHPMatcher\Matcher;
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 
+use function sprintf;
+
 final class JsonMatcher extends Matcher
 {
-    private ArrayMatcher $arrayMatcher;
-
-    private Backtrace $backtrace;
-
-    public function __construct(ArrayMatcher $arrayMatcher, Backtrace $backtrace)
+    public function __construct(private readonly ArrayMatcher $arrayMatcher, private readonly Backtrace $backtrace)
     {
-        $this->arrayMatcher = $arrayMatcher;
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
@@ -30,14 +27,14 @@ final class JsonMatcher extends Matcher
         }
 
         if (!Json::isValid($value)) {
-            $this->error = \sprintf('Invalid given JSON of value. %s', Json::getErrorMessage());
+            $this->error = sprintf('Invalid given JSON of value. %s', Json::getErrorMessage());
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
         if (!Json::isValidPattern($pattern)) {
-            $this->error = \sprintf('Invalid given JSON of pattern. %s', Json::getErrorMessage());
+            $this->error = sprintf('Invalid given JSON of pattern. %s', Json::getErrorMessage());
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -45,7 +42,7 @@ final class JsonMatcher extends Matcher
 
         $transformedPattern = Json::isValid($pattern) ? $pattern : Json::transformPattern($pattern);
 
-        $match = $this->arrayMatcher->match(\json_decode($value, true), \json_decode($transformedPattern, true));
+        $match = $this->arrayMatcher->match(json_decode((string) $value, true), json_decode((string) $transformedPattern, true));
 
         if (!$match) {
             $this->error = $this->arrayMatcher->getError();
@@ -60,7 +57,8 @@ final class JsonMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
         $result = Json::isValidPattern($pattern);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);

@@ -6,99 +6,62 @@ namespace AppVerk\PHPMatcher;
 
 use Doctrine\Common\Lexer\AbstractLexer;
 
+use function in_array;
+use function is_string;
+use function strlen;
+
 final class Lexer extends AbstractLexer
 {
-    /**
-     * @var int
-     */
-    public const T_NONE = 1;
+    public const int T_NONE = 1;
 
-    /**
-     * @var int
-     */
-    public const T_EXPANDER_NAME = 2;
+    public const int T_EXPANDER_NAME = 2;
 
-    /**
-     * @var int
-     */
-    public const T_CLOSE_PARENTHESIS = 3;
+    public const int T_CLOSE_PARENTHESIS = 3;
 
-    /**
-     * @var int
-     */
-    public const T_OPEN_CURLY_BRACE    = 4;
+    public const int T_OPEN_CURLY_BRACE = 4;
 
-    /**
-     * @var int
-     */
-    public const T_CLOSE_CURLY_BRACE   = 5;
+    public const int T_CLOSE_CURLY_BRACE = 5;
 
-    /**
-     * @var int
-     */
-    public const T_STRING = 6;
+    public const int T_STRING = 6;
 
-    /**
-     * @var int
-     */
-    public const T_NUMBER = 7;
+    public const int T_NUMBER = 7;
 
-    /**
-     * @var int
-     */
-    public const T_BOOLEAN = 8;
+    public const int T_BOOLEAN = 8;
 
-    /**
-     * @var int
-     */
-    public const T_NULL = 9;
+    public const int T_NULL = 9;
 
-    /**
-     * @var int
-     */
-    public const T_COMMA  = 10;
+    public const int T_COMMA = 10;
 
-    /**
-     * @var int
-     */
-    public const T_COLON = 11;
+    public const int T_COLON = 11;
 
-    /**
-     * @var int
-     */
-    public const T_TYPE_PATTERN = 12;
+    public const int T_TYPE_PATTERN = 12;
 
-    /**
-     * Lexical catchable patterns.
-     */
-    protected function getCatchablePatterns() : array
+    
+    #[\Override]
+    protected function getCatchablePatterns(): array
     {
         return [
-            '\\.?[a-zA-Z0-9_]+\\(', // expander name
-            '[a-zA-Z0-9.]*', // words
-            '\\-?[0-9]*\\.?[0-9]*', // numbers
-            "'(?:[^']|'')*'", // string between ' character
-            '"(?:[^"]|"")*"', // string between " character,
-            '@[a-zA-Z0-9\\*.]+@', // type pattern
+            '\\.?[a-zA-Z0-9_]+\\(', 
+            '[a-zA-Z0-9.]*', 
+            '\\-?[0-9]*\\.?[0-9]*', 
+            "'(?:[^']|'')*'", 
+            '"(?:[^"]|"")*"', 
+            '@[a-zA-Z0-9\\*.]+@', 
         ];
     }
 
-    /**
-     * Lexical non-catchable patterns.
-     *
-     * @return string[]
-     */
-    protected function getNonCatchablePatterns() : array
+    
+    #[\Override]
+    protected function getNonCatchablePatterns(): array
     {
         return [
             '\\s+',
         ];
     }
 
-    /**
-     * Retrieve token type. Also processes the token value if necessary.
-     */
-    protected function getType(&$value) : int
+    
+    #[\Override]
+    protected function getType(string &$value): int
     {
         $type = self::T_NONE;
 
@@ -123,7 +86,7 @@ final class Lexer extends AbstractLexer
         }
 
         if ($this->isTypePatternToken($value)) {
-            $value = \trim($value, '@');
+            $value = trim($value, '@');
 
             return self::T_TYPE_PATTERN;
         }
@@ -135,27 +98,24 @@ final class Lexer extends AbstractLexer
         }
 
         if ($this->isBooleanToken($value)) {
-            $value = \strtolower($value) === 'true';
+            $value = strtolower($value);
 
             return self::T_BOOLEAN;
         }
 
         if ($this->isNullToken($value)) {
-            $value = null;
+            $value = 'null';
 
             return self::T_NULL;
         }
 
-        if (\is_numeric($value)) {
-            if (\is_string($value)) {
-                $value = (\strpos($value, '.') === false) ? (int) $value : (float) $value;
-            }
-
+        if (is_numeric($value)) {
+            $value = is_string($value) && !str_contains($value, '.') && $value !== '' && $value !== '-' ? (int) $value : $value;
             return self::T_NUMBER;
         }
 
         if ($this->isExpanderNameToken($value)) {
-            $value = \rtrim(\ltrim($value, '.'), '(');
+            $value = rtrim(ltrim($value, '.'), '(');
 
             return self::T_EXPANDER_NAME;
         }
@@ -163,33 +123,33 @@ final class Lexer extends AbstractLexer
         return $type;
     }
 
-    protected function isStringToken(string $value) : bool
+    protected function isStringToken(string $value): bool
     {
-        return \in_array(\substr($value, 0, 1), ['"', "'"], true);
+        return in_array(substr($value, 0, 1), ['"', "'"], true);
     }
 
-    protected function isBooleanToken(string $value) : bool
+    protected function isBooleanToken(string $value): bool
     {
-        return \in_array(\strtolower($value), ['true', 'false'], true);
+        return in_array(strtolower($value), ['true', 'false'], true);
     }
 
-    protected function isNullToken(string $value) : bool
+    protected function isNullToken(string $value): bool
     {
-        return \strtolower($value) === 'null';
+        return strtolower($value) === 'null';
     }
 
-    protected function extractStringValue(string $value) : string
+    protected function extractStringValue(string $value): string
     {
-        return \trim(\trim($value, "'"), '"');
+        return trim(trim($value, "'"), '"');
     }
 
-    protected function isExpanderNameToken(string $value) : bool
+    protected function isExpanderNameToken(string $value): bool
     {
-        return \substr($value, -1) === '(' && \strlen($value) > 1;
+        return str_ends_with($value, '(') && strlen($value) > 1;
     }
 
-    protected function isTypePatternToken(string $value) : bool
+    protected function isTypePatternToken(string $value): bool
     {
-        return \substr($value, 0, 1) === '@' && \substr($value, \strlen($value) - 1, 1) === '@' && \strlen($value) > 1;
+        return str_starts_with($value, '@') && substr($value, strlen($value) - 1, 1) === '@' && strlen($value) > 1;
     }
 }

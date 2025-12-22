@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher;
@@ -25,9 +27,7 @@ class TextMatcherTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider matchingData
-     */
+    #[DataProvider('matchingData')]
     public function test_positive_matches($value, $pattern, $expectedResult) : void
     {
         $this->assertEquals($expectedResult, $this->matcher->match($value, $pattern));
@@ -75,7 +75,7 @@ XML;
         $this->assertSame('Type pattern "@null@" is not supported by TextMatcher.', $this->matcher->getError());
     }
 
-    public function matchingData()
+    public static function matchingData()
     {
         return [
             [

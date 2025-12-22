@@ -9,19 +9,16 @@ use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Xml;
 use Coduo\ToString\StringConverter;
 use LSS\XML2Array;
 
+use function sprintf;
+
 final class XmlMatcher extends Matcher
 {
-    private ArrayMatcher $arrayMatcher;
-
-    private Backtrace $backtrace;
-
-    public function __construct(ArrayMatcher $arrayMatcher, Backtrace $backtrace)
+    public function __construct(private readonly ArrayMatcher $arrayMatcher, private readonly Backtrace $backtrace)
     {
-        $this->arrayMatcher = $arrayMatcher;
-        $this->backtrace = $backtrace;
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
@@ -32,7 +29,7 @@ final class XmlMatcher extends Matcher
         }
 
         if (!Xml::isValid($value) || !Xml::isValid($pattern)) {
-            $this->error = \sprintf("Value or pattern are not valid XML's");
+            $this->error = "Value or pattern are not valid XML's";
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -44,10 +41,10 @@ final class XmlMatcher extends Matcher
         $match = $this->arrayMatcher->match($arrayValue, $arrayPattern);
 
         if (!$match) {
-            $this->error = \sprintf(
+            $this->error = sprintf(
                 'Value %s does not match pattern %s',
                 new StringConverter($value),
-                new StringConverter($pattern)
+                new StringConverter($pattern),
             );
 
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
@@ -60,7 +57,8 @@ final class XmlMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
         $result = Xml::isValid($pattern);
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);

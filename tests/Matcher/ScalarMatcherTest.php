@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\ScalarMatcher;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class ScalarMatcherTest extends TestCase
 {
@@ -44,7 +47,7 @@ class ScalarMatcherTest extends TestCase
     public static function negativeCanMatches()
     {
         return [
-            [new \stdClass],
+            [new stdClass()],
             [[]],
         ];
     }
@@ -53,52 +56,42 @@ class ScalarMatcherTest extends TestCase
     {
         return [
             ['test', 'norbert', '"test" does not match "norbert".'],
-            [new \stdClass,  1, '"\\stdClass" does not match "1".'],
+            [new stdClass(),  1, '"\\stdClass" does not match "1".'],
             [1.1, false, '"1.1" does not match "false".'],
             [false, ['foo', 'bar'], '"false" does not match "Array(2)".'],
         ];
     }
 
-    /**
-     * @dataProvider positiveCanMatches
-     */
-    public function test_positive_can_matches($pattern) : void
+    #[DataProvider('positiveCanMatches')]
+    public function testPositiveCanMatches($pattern): void
     {
         $matcher = new ScalarMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider negativeCanMatches
-     */
-    public function test_negative_can_matches($pattern) : void
+    #[DataProvider('negativeCanMatches')]
+    public function testNegativeCanMatches($pattern): void
     {
         $matcher = new ScalarMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider positiveMatches
-     */
-    public function test_positive_matches($value, $pattern) : void
+    #[DataProvider('positiveMatches')]
+    public function testPositiveMatches($value, $pattern): void
     {
         $matcher = new ScalarMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->match($value, $pattern));
     }
 
-    /**
-     * @dataProvider negativeMatches
-     */
-    public function test_negative_matches($value, $pattern) : void
+    #[DataProvider('negativeMatches')]
+    public function testNegativeMatches($value, $pattern): void
     {
         $matcher = new ScalarMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->match($value, $pattern));
     }
 
-    /**
-     * @dataProvider negativeMatchDescription
-     */
-    public function test_negative_match_description($value, $pattern, $error) : void
+    #[DataProvider('negativeMatchDescription')]
+    public function testNegativeMatchDescription($value, $pattern, $error): void
     {
         $matcher = new ScalarMatcher(new Backtrace\InMemoryBacktrace());
         $matcher->match($value, $pattern);

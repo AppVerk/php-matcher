@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AppVerk\PHPMatcher\Tests;
 
 use AppVerk\PHPMatcher\PHPMatcher;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class OrMatcherTest extends TestCase
@@ -31,15 +32,13 @@ final class OrMatcherTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->matcher = new PHPMatcher();
     }
 
-    /**
-     * @dataProvider orExamples()
-     */
-    public function test_matcher_with_or($value, $pattern, $expectedResult) : void
+    #[DataProvider('orExamples')]
+    public function testMatcherWithOr($value, $pattern, $expectedResult): void
     {
         $this->assertSame($expectedResult, $this->matcher->match($value, $pattern));
     }

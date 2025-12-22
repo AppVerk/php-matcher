@@ -8,54 +8,54 @@ use Aeon\Calendar\Gregorian\DateTime;
 use Aeon\Calendar\Gregorian\Time;
 use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
+use Exception;
+use InvalidArgumentException;
+
+use function is_string;
+use function sprintf;
 
 final class After implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'after';
+    public const string NAME = 'after';
 
-    private ?DateTime $boundaryDateTime;
+    private ?DateTime $boundaryDateTime = null;
 
-    private ?Time $boundaryTime;
+    private ?Time $boundaryTime = null;
 
-    private ?string $error;
+    private ?string $error = null;
 
     public function __construct($boundary)
     {
-        $this->error = null;
-        $this->boundaryTime = null;
-        $this->boundaryDateTime = null;
-
-        if (!\is_string($boundary)) {
-            $this->error = \sprintf('After expander require "string", got "%s".', new StringConverter($boundary));
+        if (!is_string($boundary)) {
+            $this->error = sprintf('After expander require "string", got "%s".', new StringConverter($boundary));
         }
 
         try {
             $this->boundaryDateTime = DateTime::fromString($boundary);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             try {
                 $this->boundaryTime = Time::fromString($boundary);
-            } catch (\Exception $exception) {
-                throw new \InvalidArgumentException(\sprintf('Boundary value "%s" is not a valid date, date time or time.', new StringConverter($boundary)));
+            } catch (Exception) {
+                throw new InvalidArgumentException(sprintf('Boundary value "%s" is not a valid date, date time or time.', new StringConverter($boundary)), $exception->getCode(), $exception);
             }
         }
     }
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
 
-        if (!\is_string($value)) {
-            $this->error = \sprintf('After expander require "string", got "%s".', new StringConverter($value));
+        if (!is_string($value)) {
+            $this->error = sprintf('After expander require "string", got "%s".', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
@@ -68,23 +68,19 @@ final class After implements PatternExpander
         return $this->compareTime($value);
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->error;
     }
 
-    /**
-     * @param string $value
-     *
-     * @return bool
-     */
-    private function compareDateTime(string $value) : bool
+    private function compareDateTime(string $value): bool
     {
         try {
             $datetime = DateTime::fromString($value);
 
             if ($datetime->isBefore($this->boundaryDateTime)) {
-                $this->error = \sprintf('Value "%s" is after "%s".', new StringConverter($value), new StringConverter($this->boundaryDateTime));
+                $this->error = sprintf('Value "%s" is after "%s".', new StringConverter($value), new StringConverter($this->boundaryDateTime));
                 $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
                 return false;
@@ -99,26 +95,21 @@ final class After implements PatternExpander
             }
 
             return $result;
-        } catch (\Exception $e) {
-            $this->error = \sprintf('Value "%s" is not a valid date.', new StringConverter($value));
+        } catch (Exception) {
+            $this->error = sprintf('Value "%s" is not a valid date.', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
         }
     }
 
-    /**
-     * @param string $value
-     *
-     * @return bool
-     */
-    private function compareTime(string $value) : bool
+    private function compareTime(string $value): bool
     {
         try {
             $datetime = Time::fromString($value);
 
             if ($datetime->isLessThan($this->boundaryTime)) {
-                $this->error = \sprintf('Value "%s" is after "%s".', new StringConverter($value), new StringConverter($this->boundaryTime));
+                $this->error = sprintf('Value "%s" is after "%s".', new StringConverter($value), new StringConverter($this->boundaryTime));
                 $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
                 return false;
@@ -133,8 +124,8 @@ final class After implements PatternExpander
             }
 
             return $result;
-        } catch (\Exception $e) {
-            $this->error = \sprintf('Value "%s" is not a valid time.', new StringConverter($value));
+        } catch (Exception) {
+            $this->error = sprintf('Value "%s" is not a valid time.', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;

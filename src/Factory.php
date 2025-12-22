@@ -6,5 +6,5 @@ namespace AppVerk\PHPMatcher;
 
 interface Factory
 {
-    public function createMatcher(Backtrace $backtrace) : Matcher;
+    public function createMatcher(Backtrace $backtrace): Matcher;
 }

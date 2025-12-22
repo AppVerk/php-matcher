@@ -6,16 +6,14 @@ namespace AppVerk\PHPMatcher\Value;
 
 use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 
-final class SingleLineString
+final readonly class SingleLineString implements \Stringable
 {
-    private string $raw;
-
-    public function __construct(string $raw)
+    public function __construct(private string $raw)
     {
-        $this->raw = $raw;
     }
 
-    public function __toString() : string
+    #[\Override]
+    public function __toString(): string
     {
         $normalized = $this->raw;
 
@@ -25,6 +23,6 @@ final class SingleLineString
             $normalized = Json::reformat(Json::transformPattern($this->raw));
         }
 
-        return \str_replace(["\r\n", "\r", "\n"], ' ', $normalized);
+        return str_replace(["\r\n", "\r", "\n"], ' ', $normalized);
     }
 }

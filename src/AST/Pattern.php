@@ -4,40 +4,34 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\AST;
 
+use function count;
+
 final class Pattern implements Node
 {
-    private Type $type;
-
-    /**
-     * @var mixed[]
-     */
+    
     private array $expanders = [];
 
-    public function __construct(Type $type)
+    public function __construct(private readonly Type $type)
     {
-        $this->expanders = [];
-        $this->type = $type;
     }
 
-    public function getType() : Type
+    public function getType(): Type
     {
         return $this->type;
     }
 
-    public function hasExpanders() : bool
+    public function hasExpanders(): bool
     {
-        return (bool) \count($this->expanders);
+        return (bool) count($this->expanders);
     }
 
-    /**
-     * @return Expander[]
-     */
-    public function getExpanders() : array
+    
+    public function getExpanders(): array
     {
         return $this->expanders;
     }
 
-    public function addExpander(Expander $expander) : void
+    public function addExpander(Expander $expander): void
     {
         $this->expanders[] = $expander;
     }

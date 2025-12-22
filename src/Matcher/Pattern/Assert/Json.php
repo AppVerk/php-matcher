@@ -4,85 +4,81 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Matcher\Pattern\Assert;
 
+use function is_float;
+use function is_string;
+
+use const JSON_ERROR_CTRL_CHAR;
+use const JSON_ERROR_DEPTH;
+use const JSON_ERROR_NONE;
+use const JSON_ERROR_STATE_MISMATCH;
+use const JSON_ERROR_SYNTAX;
+use const JSON_ERROR_UTF8;
+
 final class Json
 {
-    /**
-     * @var string
-     */
-    private const TRANSFORM_NEW_LINES = '/\r?\n|\r/';
+    private const string TRANSFORM_NEW_LINES = '/\r?\n|\r/';
 
-    /**
-     * @var string
-     */
-    private const TRANSFORM_QUOTATION_PATTERN = '/([^"])@([a-zA-Z0-9\.]+)@([^"])/';
+    private const string TRANSFORM_QUOTATION_PATTERN = '/([^"])@([a-zA-Z0-9\.]+)@([^"])/';
 
-    /**
-     * @var string
-     */
-    private const TRANSFORM_QUOTATION_REPLACEMENT = '$1"@$2@"$3';
+    private const string TRANSFORM_QUOTATION_REPLACEMENT = '$1"@$2@"$3';
 
-    public static function isValid($value) : bool
+    public static function isValid($value): bool
     {
-        if (!\is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
 
-        $result = \json_decode($value);
+        $result = json_decode($value);
 
-        if (\is_float($result) && \is_infinite($result)) {
+        if (is_float($result) && is_infinite($result)) {
             return false;
         }
 
-        if (null === $result && JSON_ERROR_NONE !== \json_last_error()) {
+        if (null === $result && JSON_ERROR_NONE !== json_last_error()) {
             return false;
         }
 
         return true;
     }
 
-    public static function isValidPattern($value) : bool
+    public static function isValidPattern($value): bool
     {
-        if (!\is_string($value)) {
+        if (!is_string($value)) {
             return false;
         }
-
-        return self::isValid($value) || self::isValid(self::transformPattern($value));
+        if (self::isValid($value)) {
+            return true;
+        }
+        return self::isValid(self::transformPattern($value));
     }
 
-    public static function transformPattern(string $pattern) : ?string
+    public static function transformPattern(string $pattern): ?string
     {
-        return \preg_replace(
+        return preg_replace(
             self::TRANSFORM_NEW_LINES,
             '',
-            \preg_replace(
+            (string) preg_replace(
                 self::TRANSFORM_QUOTATION_PATTERN,
                 self::TRANSFORM_QUOTATION_REPLACEMENT,
-                $pattern
-            )
+                $pattern,
+            ),
         );
     }
 
-    public static function reformat(string $json) : string
+    public static function reformat(string $json): string
     {
-        return \json_encode(\json_decode($json, true));
+        return json_encode(json_decode($json, true));
     }
 
-    public static function getErrorMessage() : string
+    public static function getErrorMessage(): string
     {
-        switch (\json_last_error()) {
-            case JSON_ERROR_DEPTH:
-                return 'Maximum stack depth exceeded';
-            case JSON_ERROR_STATE_MISMATCH:
-                return 'Underflow or the modes mismatch';
-            case JSON_ERROR_CTRL_CHAR:
-                return 'Unexpected control character found';
-            case JSON_ERROR_SYNTAX:
-                return 'Syntax error, malformed JSON';
-            case JSON_ERROR_UTF8:
-                return 'Malformed UTF-8 characters, possibly incorrectly encoded';
-
-            default:
-                return 'Unknown error';
-        }
+        return match (json_last_error()) {
+            JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
+            JSON_ERROR_STATE_MISMATCH => 'Underflow or the modes mismatch',
+            JSON_ERROR_CTRL_CHAR => 'Unexpected control character found',
+            JSON_ERROR_SYNTAX => 'Syntax error, malformed JSON',
+            JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded',
+            default => 'Unknown error',
+        };
     }
 }

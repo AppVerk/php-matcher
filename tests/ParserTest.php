@@ -8,6 +8,7 @@ use AppVerk\PHPMatcher\AST\Expander;
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Parser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
@@ -68,12 +69,12 @@ class ParserTest extends TestCase
         ];
     }
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->parser = new Parser(new Lexer(), new Parser\ExpanderInitializer(new Backtrace\InMemoryBacktrace()));
     }
 
-    public function test_simple_pattern_without_expanders() : void
+    public function testSimplePatternWithoutExpanders(): void
     {
         $pattern = '@type@';
 
@@ -81,7 +82,7 @@ class ParserTest extends TestCase
         $this->assertFalse($this->parser->getAST($pattern)->hasExpanders());
     }
 
-    public function test_single_expander_without_args() : void
+    public function testSingleExpanderWithoutArgs(): void
     {
         $pattern = '@type@.expander()';
 
@@ -91,7 +92,7 @@ class ParserTest extends TestCase
         $this->assertFalse($expanders[0]->hasArguments());
     }
 
-    public function test_single_expander_with_arguments() : void
+    public function testSingleExpanderWithArguments(): void
     {
         $pattern = "@type@.expander('arg1', 2, 2.24, \"arg3\")";
         $this->assertEquals('type', $this->parser->getAST($pattern)->getType());
@@ -105,7 +106,7 @@ class ParserTest extends TestCase
         $this->assertEquals($expectedArguments, $expanders[0]->getArguments());
     }
 
-    public function test_many_expanders() : void
+    public function testManyExpanders(): void
     {
         $pattern = "@type@.expander('arg1', 2, 2.24, \"arg3\", null, false).expander1().expander(1,2,3, true, null)";
         $expanderArguments = [
@@ -125,16 +126,14 @@ class ParserTest extends TestCase
         $this->assertEquals($expanderArguments[2], $expanders[2]->getArguments());
     }
 
-    /**
-     * @dataProvider expandersWithArrayArguments
-     */
-    public function test_single_array_argument_with_string_key_value($pattern, $expectedArgument) : void
+    #[DataProvider('expandersWithArrayArguments')]
+    public function testSingleArrayArgumentWithStringKeyValue($pattern, $expectedArgument): void
     {
         $expanders = $this->parser->getAST($pattern)->getExpanders();
         $this->assertEquals($expectedArgument, $expanders[0]->getArguments());
     }
 
-    public function test_expanders_that_takes_other_expanders_as_arguments() : void
+    public function testExpandersThatTakesOtherExpandersAsArguments(): void
     {
         $pattern = '@type@.expander(expander("test"), expander(1))';
         $expanders = $this->parser->getAST($pattern)->getExpanders();
@@ -149,7 +148,7 @@ class ParserTest extends TestCase
             [
                 $firstExpander,
                 $secondExpander,
-            ]
+            ],
         );
     }
 }

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\NotContains;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class NotContainsTest extends TestCase
@@ -34,34 +37,28 @@ class NotContainsTest extends TestCase
     {
         return [
             ['ipsum', 'lorem ipsum', 'String "lorem ipsum" contains "ipsum".'],
-            ['lorem', new \DateTime(), 'Not contains expander require "string", got "\\DateTime".'],
+            ['lorem', new DateTime(), 'Not contains expander require "string", got "\\DateTime".'],
         ];
     }
 
-    /**
-     * @dataProvider examplesCaseSensitiveProvider
-     */
-    public function test_matching_values_case_sensitive($needle, $haystack, $expectedResult) : void
+    #[DataProvider('examplesCaseSensitiveProvider')]
+    public function testMatchingValuesCaseSensitive($needle, $haystack, $expectedResult): void
     {
         $expander = new NotContains($needle);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($haystack));
     }
 
-    /**
-     * @dataProvider examplesCaseInsensitiveProvider
-     */
-    public function test_matching_values_case_insensitive($needle, $haystack, $expectedResult) : void
+    #[DataProvider('examplesCaseInsensitiveProvider')]
+    public function testMatchingValuesCaseInsensitive($needle, $haystack, $expectedResult): void
     {
         $expander = new NotContains($needle, true);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());
         $this->assertEquals($expectedResult, $expander->match($haystack));
     }
 
-    /**
-     * @dataProvider invalidCasesProvider
-     */
-    public function test_error_when_matching_fail($string, $value, $errorMessage) : void
+    #[DataProvider('invalidCasesProvider')]
+    public function testErrorWhenMatchingFail($string, $value, $errorMessage): void
     {
         $expander = new NotContains($string);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

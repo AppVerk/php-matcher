@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Lexer;
 use AppVerk\PHPMatcher\Matcher;
@@ -126,33 +128,25 @@ XML
         );
     }
 
-    /**
-     * @dataProvider positivePatterns
-     */
+    #[DataProvider('positivePatterns')]
     public function test_positive_can_match($pattern) : void
     {
         $this->assertTrue($this->matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider negativePatterns
-     */
+    #[DataProvider('negativePatterns')]
     public function test_negative_can_match($pattern) : void
     {
         $this->assertFalse($this->matcher->canMatch($pattern));
     }
 
-    /**
-     * @dataProvider positiveMatches
-     */
+    #[DataProvider('positiveMatches')]
     public function test_positive_matches($value, $pattern) : void
     {
         $this->assertTrue($this->matcher->match($value, $pattern), (string) $this->matcher->getError());
     }
 
-    /**
-     * @dataProvider negativeMatches
-     */
+    #[DataProvider('negativeMatches')]
     public function test_negative_matches($value, $pattern) : void
     {
         $this->assertFalse($this->matcher->match($value, $pattern), (string) $this->matcher->getError());

@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\PHPMatcher;
 use AppVerk\PHPMatcher\PHPUnit\PHPMatcherTestCase;
 
 class MatcherTest extends PHPMatcherTestCase
 {
-    /**
-     * @dataProvider scalarValueExamples
-     */
+    #[DataProvider('scalarValueExamples')]
     public function test_matcher_with_scalar_values($value, $pattern) : void
     {
         $this->assertMatchesPattern($pattern, $value);
     }
 
-    public function scalarValueExamples()
+    public static function scalarValueExamples()
     {
         return [
             ['Norbert Orzechowicz', '@string@'],
@@ -72,15 +72,13 @@ class MatcherTest extends PHPMatcherTestCase
         $this->assertMatchesPattern($pattern, $value);
     }
 
-    /**
-     * @dataProvider jsonDataProvider
-     */
+    #[DataProvider('jsonDataProvider')]
     public function test_matcher_with_json($value, $pattern) : void
     {
         $this->assertMatchesPattern($pattern, $value);
     }
 
-    public function jsonDataProvider()
+    public static function jsonDataProvider()
     {
         return [
             [
@@ -368,15 +366,13 @@ XML;
         $this->assertMatchesPattern('@wildcard@', 'test');
     }
 
-    /**
-     * @dataProvider nullExamples
-     */
+    #[DataProvider('nullExamples')]
     public function test_null_value_in_the_json(string $value, string $pattern) : void
     {
         $this->assertMatchesPattern($pattern, $value);
     }
 
-    public function nullExamples()
+    public static function nullExamples()
     {
         return [
             [

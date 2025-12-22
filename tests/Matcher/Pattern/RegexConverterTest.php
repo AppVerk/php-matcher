@@ -12,12 +12,12 @@ class RegexConverterTest extends TestCase
 {
     private ?RegexConverter $converter = null;
 
-    public function setUp() : void
+    protected function setUp(): void
     {
         $this->converter = new RegexConverter();
     }
 
-    public function test_convert_unknown_type() : void
+    public function testConvertUnknownType(): void
     {
         $this->expectException(\AppVerk\PHPMatcher\Exception\UnknownTypeException::class);
 

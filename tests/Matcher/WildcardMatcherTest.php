@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\WildcardMatcher;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class WildcardMatcherTest extends TestCase
 {
@@ -18,7 +21,7 @@ class WildcardMatcherTest extends TestCase
             [true],
             [6.66],
             [['bar']],
-            [new \stdClass],
+            [new stdClass()],
         ];
     }
 
@@ -30,25 +33,21 @@ class WildcardMatcherTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider data
-     */
-    public function test_positive_match($pattern) : void
+    #[DataProvider('data')]
+    public function testPositiveMatch($pattern): void
     {
         $matcher = new WildcardMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->match('*', $pattern));
     }
 
-    /**
-     * @dataProvider positivePatterns
-     */
-    public function test_positive_can_match($pattern) : void
+    #[DataProvider('positivePatterns')]
+    public function testPositiveCanMatch($pattern): void
     {
         $matcher = new WildcardMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertTrue($matcher->canMatch($pattern));
     }
 
-    public function test_negative_can_match() : void
+    public function testNegativeCanMatch(): void
     {
         $matcher = new WildcardMatcher(new Backtrace\InMemoryBacktrace());
         $this->assertFalse($matcher->canMatch('*'));

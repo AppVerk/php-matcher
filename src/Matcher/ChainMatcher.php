@@ -9,34 +9,24 @@ use AppVerk\PHPMatcher\Matcher\Pattern\Assert\Json;
 use AppVerk\PHPMatcher\Value\SingleLineString;
 use Coduo\ToString\StringConverter;
 
+use function is_array;
+use function sprintf;
+
 final class ChainMatcher extends Matcher
 {
-    private string $name;
+    
+    private array $matcherErrors = [];
 
-    private Backtrace $backtrace;
-
-    /**
-     * @var ValueMatcher[]
-     */
-    private array $matchers = [];
-
-    /**
-     * @var array<string, string>
-     */
-    private array $matcherErrors;
-
-    /**
-     * @param Backtrace $backtrace
-     * @param ValueMatcher[] $matchers
-     */
-    public function __construct(string $name, Backtrace $backtrace, array $matchers = [])
-    {
-        $this->backtrace = $backtrace;
-        $this->matchers = $matchers;
-        $this->name = $name;
+    
+    public function __construct(
+        private readonly string $name,
+        private readonly Backtrace $backtrace,
+        private readonly array $matchers = []
+    ) {
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance($this->matcherName(), $value, $pattern);
 
@@ -48,21 +38,21 @@ final class ChainMatcher extends Matcher
                     return true;
                 }
 
-                $this->matcherErrors[\get_class($propertyMatcher)] = (string) $propertyMatcher->getError();
+                $this->matcherErrors[$propertyMatcher::class] = (string) $propertyMatcher->getError();
                 $this->error = $propertyMatcher->getError();
             }
         }
 
-        if (!isset($this->error)) {
-            if (\is_array($value) && isset($this->matcherErrors[ArrayMatcher::class])) {
+        if ($this->error === null) {
+            if (is_array($value) && isset($this->matcherErrors[ArrayMatcher::class])) {
                 $this->error = $this->matcherErrors[ArrayMatcher::class];
             } elseif (Json::isValidPattern($pattern) && isset($this->matcherErrors[JsonMatcher::class])) {
                 $this->error = $this->matcherErrors[JsonMatcher::class];
             } else {
-                $this->error = \sprintf(
+                $this->error = sprintf(
                     'Any matcher from chain can\'t match value "%s" to pattern "%s"',
                     new SingleLineString((string) new StringConverter($value)),
-                    new SingleLineString((string) new StringConverter($pattern))
+                    new SingleLineString((string) new StringConverter($pattern)),
                 );
             }
         }
@@ -72,18 +62,16 @@ final class ChainMatcher extends Matcher
         return false;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
         $this->backtrace->matcherCanMatch($this->matcherName(), $pattern, true);
 
         return true;
     }
 
-    /**
-     * @return string
-     */
-    private function matcherName() : string
+    private function matcherName(): string
     {
-        return \sprintf('%s (%s)', self::class, $this->name);
+        return sprintf('%s (%s)', self::class, $this->name);
     }
 }

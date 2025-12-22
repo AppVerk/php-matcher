@@ -7,42 +7,42 @@ namespace AppVerk\PHPMatcher\Matcher\Pattern\Expander;
 use AppVerk\PHPMatcher\Matcher\Pattern\PatternExpander;
 use Coduo\ToString\StringConverter;
 
+use function count;
+use function is_array;
+use function sprintf;
+
 final class Count implements PatternExpander
 {
     use BacktraceBehavior;
 
-    /**
-     * @var string
-     */
-    public const NAME = 'count';
+    public const string NAME = 'count';
 
     private ?string $error = null;
 
-    private int $value;
-
-    public function __construct(int $value)
+    public function __construct(private int $value)
     {
-        $this->value = $value;
     }
 
-    public static function is(string $name) : bool
+    #[\Override]
+    public static function is(string $name): bool
     {
         return self::NAME === $name;
     }
 
-    public function match($value) : bool
+    #[\Override]
+    public function match(mixed $value): bool
     {
         $this->backtrace->expanderEntrance(self::NAME, $value);
 
-        if (!\is_array($value)) {
-            $this->error = \sprintf('Count expander require "array", got "%s".', new StringConverter($value));
+        if (!is_array($value)) {
+            $this->error = sprintf('Count expander require "array", got "%s".', new StringConverter($value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
         }
 
-        if (\count($value) !== $this->value) {
-            $this->error = \sprintf('Expected count of %s is %s.', new StringConverter($value), new StringConverter($this->value));
+        if (count($value) !== $this->value) {
+            $this->error = sprintf('Expected count of %s is %s.', new StringConverter($value), new StringConverter($this->value));
             $this->backtrace->expanderFailed(self::NAME, $value, $this->error);
 
             return false;
@@ -53,7 +53,8 @@ final class Count implements PatternExpander
         return true;
     }
 
-    public function getError() : ?string
+    #[\Override]
+    public function getError(): ?string
     {
         return $this->error;
     }

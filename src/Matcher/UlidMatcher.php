@@ -9,87 +9,78 @@ use AppVerk\PHPMatcher\Parser;
 use Coduo\ToString\StringConverter;
 use Symfony\Component\Validator\Constraints\Ulid;
 
+use function gettype;
+use function is_string;
+use function sprintf;
+use function strlen;
+
 final class UlidMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const PATTERN = 'ulid';
+    public const string PATTERN = 'ulid';
 
-    /**
-     * ULID validation pattern highly inspired by the Symfony Uid Component.
-     *
-     * @see https://github.com/symfony/uid/blob/8311a3f6e14c21960e7955452fe52a462d58ad2b/Ulid.php#L41-L52
-     *
-     * @var string
-     */
-    public const ULID_PATTERN = '[01234567]{1}[0123456789ABCDEFGHJKMNPQRSTVWXYZabcdefghjkmnpqrstvwxyz]{25}';
+    
+    public const string ULID_PATTERN = '[01234567]{1}[0123456789ABCDEFGHJKMNPQRSTVWXYZabcdefghjkmnpqrstvwxyz]{25}';
 
-    private Backtrace $backtrace;
-
-    private Parser $parser;
-
-    public function __construct(Backtrace $backtrace, Parser $parser)
-    {
-        $this->parser = $parser;
-        $this->backtrace = $backtrace;
+    public function __construct(
+        private readonly Backtrace $backtrace,
+        private readonly Parser $parser
+    ) {
     }
 
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
-        if (!\is_string($value)) {
-            $this->error = \sprintf(
+        if (!is_string($value)) {
+            $this->error = sprintf(
                 '%s "%s" is not a valid ULID: not a string.',
-                \gettype($value),
-                new StringConverter($value)
+                gettype($value),
+                new StringConverter($value),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
-        if (\strlen($value) !== \strspn($value, '0123456789ABCDEFGHJKMNPQRSTVWXYZabcdefghjkmnpqrstvwxyz')) {
-            $this->error = \sprintf(
+        if (strlen($value) !== strspn($value, '0123456789ABCDEFGHJKMNPQRSTVWXYZabcdefghjkmnpqrstvwxyz')) {
+            $this->error = sprintf(
                 '%s "%s" is not a valid ULID: invalid characters.',
-                \gettype($value),
-                new StringConverter($value)
+                gettype($value),
+                new StringConverter($value),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
-        if (26 < \strlen($value)) {
-            $this->error = \sprintf(
+        if (26 < strlen($value)) {
+            $this->error = sprintf(
                 '%s "%s" is not a valid ULID: too long.',
-                \gettype($value),
-                new StringConverter($value)
+                gettype($value),
+                new StringConverter($value),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
-        if (26 > \strlen($value)) {
-            $this->error = \sprintf(
+        if (26 > strlen($value)) {
+            $this->error = sprintf(
                 '%s "%s" is not a valid ULID: too short.',
-                \gettype($value),
-                new StringConverter($value)
+                gettype($value),
+                new StringConverter($value),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
         }
 
-        // Largest valid ULID is '7ZZZZZZZZZZZZZZZZZZZZZZZZZ'
-        // Cf https://github.com/ulid/spec#overflow-errors-when-parsing-base32-strings
         if ($value[0] > '7') {
-            $this->error = \sprintf(
+            $this->error = sprintf(
                 '%s "%s" is not a valid ULID: overflow.',
-                \gettype($value),
-                new StringConverter($value)
+                gettype($value),
+                new StringConverter($value),
             );
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
@@ -101,9 +92,10 @@ final class UlidMatcher extends Matcher
         return true;
     }
 
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        if (!\is_string($pattern)) {
+        if (!is_string($pattern)) {
             $this->backtrace->matcherCanMatch(self::class, $pattern, false);
 
             return false;

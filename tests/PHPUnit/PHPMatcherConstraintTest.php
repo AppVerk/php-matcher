@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\PHPUnit;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\PHPUnit\PHPMatcherConstraint;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\Constraint;
@@ -102,9 +104,7 @@ JSON
         $this->assertTrue($constraint->evaluate(['foo' => 'foo value'], '', true));
     }
 
-    /**
-     * @dataProvider invalidPatterns
-     */
+    #[DataProvider('invalidPatterns')]
     public function test_that_pattern_could_be_only_a_string_or_an_array($pattern) : void
     {
         $this->expectException(\LogicException::class);
@@ -112,7 +112,7 @@ JSON
         new PHPMatcherConstraint($pattern);
     }
 
-    public function invalidPatterns()
+    public static function invalidPatterns()
     {
         return [
             [true],

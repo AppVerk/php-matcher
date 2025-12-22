@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\HasProperty;
 use PHPUnit\Framework\TestCase;
@@ -21,10 +23,8 @@ class HasPropertyTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
-    public function test_examples($propertyName, $value, $expectedResult) : void
+    #[DataProvider('examplesProvider')]
+    public function testExamples($propertyName, $value, $expectedResult): void
     {
         $expander = new HasProperty($propertyName);
         $expander->setBacktrace(new Backtrace\InMemoryBacktrace());

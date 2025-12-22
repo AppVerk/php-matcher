@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AppVerk\PHPMatcher\Tests\Matcher\Pattern\Expander;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use AppVerk\PHPMatcher\Backtrace;
 use AppVerk\PHPMatcher\Matcher\Pattern\Expander\MatchRegex;
 use PHPUnit\Framework\TestCase;
@@ -19,9 +21,7 @@ class MatchRegexTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider examplesProvider
-     */
+    #[DataProvider('examplesProvider')]
     public function test_match_expander($expectedResult, $expectedError, $pattern, $value) : void
     {
         $expander = new MatchRegex($pattern);

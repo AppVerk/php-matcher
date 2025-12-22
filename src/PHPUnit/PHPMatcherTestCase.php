@@ -8,12 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 abstract class PHPMatcherTestCase extends TestCase
 {
-    protected function assertMatchesPattern($pattern, $value, string $message = '') : void
+    protected function assertMatchesPattern($pattern, $value, string $message = ''): void
     {
         $this->assertThat($value, self::matchesPattern($pattern), $message);
     }
 
-    protected static function matchesPattern($pattern) : PHPMatcherConstraint
+    protected static function matchesPattern($pattern): PHPMatcherConstraint
     {
         return new PHPMatcherConstraint($pattern);
     }

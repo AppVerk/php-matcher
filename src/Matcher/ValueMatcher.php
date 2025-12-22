@@ -6,25 +6,15 @@ namespace AppVerk\PHPMatcher\Matcher;
 
 interface ValueMatcher
 {
-    /**
-     * Matches value against the pattern.
-     */
-    public function match($value, $pattern) : bool;
+    
+    public function match(mixed $value, mixed $pattern): bool;
 
-    /**
-     * Checks if matcher can match the pattern.
-     */
-    public function canMatch($pattern) : bool;
+    
+    public function canMatch(mixed $pattern): bool;
 
-    /**
-     * Returns a string description why matching failed.
-     *
-     * @return null|string
-     */
-    public function getError() : ?string;
+    
+    public function getError(): ?string;
 
-    /**
-     * Clear last error.
-     */
-    public function clearError() : void;
+    
+    public function clearError(): void;
 }

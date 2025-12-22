@@ -7,29 +7,25 @@ namespace AppVerk\PHPMatcher\Matcher;
 use AppVerk\PHPMatcher\Backtrace;
 use Coduo\ToString\StringConverter;
 
+use function gettype;
+use function is_string;
+use function sprintf;
+
 final class NullMatcher extends Matcher
 {
-    /**
-     * @var string
-     */
-    public const MATCH_PATTERN = '/^@null@$/';
+    public const string MATCH_PATTERN = '/^@null@$/';
 
-    private Backtrace $backtrace;
-
-    public function __construct(Backtrace $backtrace)
+    public function __construct(private readonly Backtrace $backtrace)
     {
-        $this->backtrace = $backtrace;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function match($value, $pattern) : bool
+    #[\Override]
+    public function match(mixed $value, mixed $pattern): bool
     {
         $this->backtrace->matcherEntrance(self::class, $value, $pattern);
 
         if (null !== $value) {
-            $this->error = \sprintf('%s "%s" does not match null.', \gettype($value), new StringConverter($value));
+            $this->error = sprintf('%s "%s" does not match null.', gettype($value), new StringConverter($value));
             $this->backtrace->matcherFailed(self::class, $value, $pattern, $this->error);
 
             return false;
@@ -40,12 +36,10 @@ final class NullMatcher extends Matcher
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function canMatch($pattern) : bool
+    #[\Override]
+    public function canMatch(mixed $pattern): bool
     {
-        $result = null === $pattern || (\is_string($pattern) && 0 !== \preg_match(self::MATCH_PATTERN, $pattern));
+        $result = null === $pattern || (is_string($pattern) && 0 !== preg_match(self::MATCH_PATTERN, $pattern));
         $this->backtrace->matcherCanMatch(self::class, $pattern, $result);
 
         return $result;
